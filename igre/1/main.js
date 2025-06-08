@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { debug, max } from 'three/tsl';
+import * as THREE from 'https://cdn.skypack.dev/three@0.136';
+//import { debug, max } from 'three/tsl';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
