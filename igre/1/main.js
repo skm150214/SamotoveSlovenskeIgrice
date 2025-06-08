@@ -228,36 +228,5 @@ function animate() {
   //oldY = player.position.y;
   camera.position.y = Math.max(15, (player.position.y - 5)+15);
   renderer.render( scene, camera );
-}
-function doTheCoolMovingShyt(){
-  //TimeToParty = 0;
-  //TimeToPartyAdd = 0.1;
-  PartyDecrease =1;
-}
-// ts pmo icl :skull:
-function onKeyDown( event ) {
-  if (!event.repeat) {
-    //console.log(pressedKeys);
-    pressedKeys.add(event.key);
-    if (event.key == "F4") {
-      DEBUGMODE = !DEBUGMODE;
-      console.log(DEBUGMODE);
-      console.log(pressedKeys);
-    }
-  }
-}
-function onKeyUp( event ) {
-  //console.log(pressedKeys);
-  pressedKeys.delete(event.key);
-  //console.log(pressedKeys);
-}
-document.addEventListener("keydown", onKeyDown);
-document.addEventListener("keyup", onKeyUp);
-setInterval(doTheCoolMovingShyt, 15000);
-setTimeout(() => {
-  console.log('did the prewaiting stuff');
-}, 5000);
 
-doTheCoolMovingShyt();
-//doTheRedColorShyt();
-//moveTheBlocks();
+}
