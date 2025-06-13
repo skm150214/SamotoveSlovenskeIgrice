@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.136';
 //import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 //import { debug, max } from 'three/tsl';
-import { CSS2DRenderer, CSS2DObject } from 'https://cdn.skypack.dev/three/examples/jsm/renderers/CSS2DRenderer.js';
+import { CSS2DRenderer, CSS2DObject } from 'https://cdn.skypack.dev/three-css2drenderer';
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 
 const scene = new THREE.Scene();
