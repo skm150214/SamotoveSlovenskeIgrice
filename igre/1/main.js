@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.skypack.dev/three';
+import * as THREE from 'https://cdn.skypack.dev/three@0.136';
 import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 import { debug, max } from 'three/tsl';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
