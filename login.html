@@ -25,37 +25,58 @@
     //  google.accounts.id.prompt(); // optional — shows One Tap prompt
     //};
 
-      function handleCredentialResponse(response) {
-    // Decode JWT if you want to show user info
-    const data = parseJwt(response.credential);
-    console.log("Logged in as:", data.name);
+function handleCredentialResponse(response) {
+  const data = parseJwt(response.credential);
+  console.log("Logged in as:", data.name);
 
-    // Show logout button
-    document.getElementById('logoutBtn').style.display = 'inline-block';
-    
-    // Optionally hide login button
-    document.querySelector('.g_id_signin').style.display = 'none';
-  }
+  // Save user info to localStorage
+  localStorage.setItem("user", JSON.stringify(data));
 
-  function parseJwt(token) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+  // Show logout button and hide login
+  document.getElementById('logoutBtn').style.display = 'inline-block';
+  const loginBtn = document.querySelector('.g_id_signin');
+  if (loginBtn) loginBtn.style.display = 'none';
+
+  // Optional: show greeting
+  const userInfo = document.getElementById('userInfo');
+  if (userInfo) userInfo.textContent = `Pozdravljen, ${data.name}!`;
+}
+
+function parseJwt(token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(
+    atob(base64).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload);
+    }).join('')
+  );
+  return JSON.parse(jsonPayload);
+}
+
+// When page loads
+document.addEventListener("DOMContentLoaded", () => {
+  // Check if user is already stored
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+    // Restore login UI state
+    document.getElementById('logoutBtn').style.display = 'inline-block';
+    const loginBtn = document.querySelector('.g_id_signin');
+    if (loginBtn) loginBtn.style.display = 'none';
+
+    // Optional: show greeting
+    const userInfo = document.getElementById('userInfo');
+    if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
   }
 
-  // Handle logout
-  document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById('logoutBtn');
-    logoutBtn.addEventListener("click", () => {
-      google.accounts.id.disableAutoSelect(); // forget the last login
-      location.reload(); // refresh to reset login UI
-    });
+  // Setup logout
+  const logoutBtn = document.getElementById('logoutBtn');
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("user"); // clear saved user
+    google.accounts.id.disableAutoSelect(); // prevent auto re-login
+    location.reload(); // refresh to reset UI
   });
+});
 </script>
-  </script>
     <style>
         @property --gradient-angle {
             syntax: "<angle>";
@@ -165,19 +186,23 @@
     <div class="cardCont">
         <div class="card">
             <label>lalala</label>
-            <div id="g_id_onload"
-                data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
-                data-callback="handleCredentialResponse"
-                data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin"
-                data-type="standard"
-                data-size="large"
-                data-theme="filled_blue"
-                data-text="sign_in_with"
-                data-shape="rectangular"
-                data-logo_alignment="left">
-            </div>
+                <div id="g_id_onload"
+                    data-client_id="YOUR_CLIENT_ID.apps.googleusercontent.com"
+                    data-context="signin"
+                    data-ux_mode="popup"
+                    data-callback="handleCredentialResponse"
+                    data-auto_select="true"
+                    data-itp_support="true">
+                </div>
+
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-shape="rectangular"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-size="large"
+                    data-logo_alignment="left">
+                </div>
             <button id="logoutBtn"class="gumb" style="display:none;">Logout</button>
         </div>
     </div>
