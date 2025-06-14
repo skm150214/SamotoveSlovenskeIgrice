@@ -43,9 +43,13 @@
             font-family: "ComicSansCustom", cursive;
             color: white;
         }
+        .rightTopaling{
+            margin-left: auto;
+        }
         .gumb{
+
             align-items: right;
-            background-color: #4CAF50;
+            background-color: #4caf50;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -53,10 +57,14 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
             cursor: pointer;
             border-radius: 8px;
             font-family: "ComicSansCustom", cursive;
+            transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+        .gumb:hover{
+            scale: 1.1;
+            background-color: #2cad4e;
         }
 
         .slikacontainer {
@@ -68,6 +76,7 @@
             flex-wrap: nowrap;
             gap: 2vh;
             padding: 0 2vh;
+            background-color: cadetblue;
         }
 
         .slika-wrapper {
@@ -119,18 +128,31 @@
 <body>
     <div class="zgori">
         <h1>Samotove Šolske Igrice</h1>
+        <div class="rightTopaling">
+        <a id="prijaviteText">Prijavite se tukaj: </a>
         <button class="gumb" onclick="window.location.href = 'login.html';">Račun</button>
+        </div>
     </div>
     <div class="slikacontainer">
-        <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra(1)" draggable="false" id="a"></div>
+        <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra(1)" draggable="false"></div>
         <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"></div>
         <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"></div>
     </div>
     <script>
-        var fav = document.getElementById("a");
+        //var fav = document.getElementById("a");
         //fav.style.setProperty('--gradient-angle', '90deg');
         //fav.style.setProperty("background", "conic-gradient(from var(--gradient-angle), blue, lightblue, red, white, blue);");
         //alert("did aaaaaaaaaaaaaaaa")
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+        document.getElementById("prijaviteText").textContent = "Prijavljeni ste kot: " + user.name;
+    }
+  });
+
+
     </script>
 </body>
 </html>
