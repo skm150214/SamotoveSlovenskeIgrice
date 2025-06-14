@@ -3,6 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Samotova Login AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+    function handleCredentialResponse(response) {
+      // This is a JWT (ID token)
+      //console.log("Encoded JWT ID token: " + response.credential);
+      // Decode it (optional) or send it to your server for verification
+    }
+
+    //window.onload = function () {
+    //  google.accounts.id.initialize({
+    //    client_id: "449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com",
+    //    callback: handleCredentialResponse
+    //  });
+
+    //  google.accounts.id.renderButton(
+    //    document.getElementById("g_id_signin"),
+    //    { theme: "outline", size: "large" }
+    //  );
+
+    //  google.accounts.id.prompt(); // optional — shows One Tap prompt
+    //};
+  </script>
     <style>
         @property --gradient-angle {
             syntax: "<angle>";
@@ -70,6 +92,27 @@
             font-family: "ComicSansCustom", cursive;
             color: white;
         }
+        .cardCont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100% - 70px); /* adjust if navbar height changes */
+            padding: 20px;
+        }
+
+            
+        .card {
+            background-color: #333; /* same as navbar */
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            max-width: 320px;
+            width: 100%;
+            text-align: center;
+            font-family: "ComicSansCustom", cursive;
+            color: white;
+        }
+
         @keyframes rotation {
             0% {
                 --gradient-angle: 0deg;
@@ -89,8 +132,23 @@
         <button class="gumb" onclick="window.location.href = 'index.html';">Nazaj</button>
 
     </div>
-    <div class="login">
-        <label>Ime:</label>
+    <div class="cardCont">
+        <div class="card">
+            <label>lalala</label>
+            <div id="g_id_onload"
+                data-client_id="${{ secrets.AUTH_ID }}"
+                data-callback="handleCredentialResponse"
+                data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                data-type="standard"
+                data-size="large"
+                data-theme="filled_blue"
+                data-text="sign_in_with"
+                data-shape="rectangular"
+                data-logo_alignment="left">
+            </div>
         </div>
+    </div>
 </body>
 </html>
