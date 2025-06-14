@@ -9,9 +9,26 @@
       src: url("../../fonts/comicsans.ttf") format("truetype");
       font-weight: bold;
     }
+    html {
+        margin: 0;
+        padding: 0;
+        font-family: "ComicSansCustom", cursive;
+    }
     body {
-      margin: 0;
-      background:linear-gradient(to bottom,  hotpink 50px, black 0px, black 100%);
+        background-color: black;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    .zgori {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #401a2d;
+
+        font-family: "ComicSansCustom", cursive;
     }
     iframe {
       width: 100%;
@@ -31,12 +48,15 @@
       transition: background-color 0.3s ease;
       border: 2px solid deeppink; 
       font-family: "ComicSansCustom", cursive;
+
     }
 
   </style>
 </head>
 <body>
-  <button class="button" onclick="window.location.href = '/';">Nazaj</button>
+  <div class="zgori">
+    <button class="button" onclick="window.location.href = '/';">Nazaj</button>
+  </div>
   <iframe src="main.html"></iframe>
 
 </body>

@@ -9,50 +9,87 @@
             initial-value: 0deg;
             inherits: false;
         }
+        @font-face {
+            font-family: "ComicSansBold";
+            src: url("../../fonts/comicsans.ttf") format("truetype");
+            font-weight: bold;
+        }
+            * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
         body {
-            background-image: linear-gradient(to bottom, #a553db 4rem, #313131 6rem);
+            background-color: lightslategray;
             background-size: 100% 100%;
             background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
         .zgori {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            font-family: "ComicSansCustom", cursive;
+            color: white;
+        }
+        .gumb{
+            align-items: right;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
             text-align: center;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: "ComicSansCustom", cursive;
         }
 
         .slikacontainer {
             display: flex;
-            margin-top: 4rem;
+            margin-top: 4vh;
             flex-direction: row;
-            justify-content: space-between;
+
             align-items: center;
             flex-wrap: nowrap;
-            gap: 2rem;
-            padding: 0 2rem;
+            gap: 2vh;
+            padding: 0 2vh;
         }
 
         .slika-wrapper {
             position: relative;
-            border-radius: 1rem;
-            width: 20rem;
-            height: 35rem;
+            border-radius: 1vh;
+            width: 20vh;
+            height: 20vh;
         }
 
         .slika-wrapper::before,
         .slika-wrapper::after {
             content: "";
             position: absolute;
-            inset: -0.5rem;
+            inset: -0.5vh;
             z-index: 0;
             background: conic-gradient(from var(--gradient-angle), red, yellow, lime, cyan, blue, magenta, red);
-            border-radius: 1.5rem;
+            border-radius: 1.5vh;
             animation: rotation 4.5s linear infinite;
         }
 
         .slika-wrapper::after {
-            filter: blur(0.5rem);
+            filter: blur(0.5vh);
         }
 
         .slika {
@@ -61,7 +98,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            border-radius: 1rem;
+            border-radius: 1vh;
             z-index: 1;
             display: block;
             cursor: pointer;
@@ -80,7 +117,10 @@
 
 </head>
 <body>
-    <h1 class="zgori">Samotove Šolske Igrice</h1>
+    <div class="zgori">
+        <h1>Samotove Šolske Igrice</h1>
+        <button class="gumb" onclick="window.location.href = 'login.html';">Račun</button>
+    </div>
     <div class="slikacontainer">
         <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra(1)" draggable="false" id="a"></div>
         <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"></div>
