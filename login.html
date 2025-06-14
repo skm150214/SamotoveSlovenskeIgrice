@@ -64,8 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginBtn) loginBtn.style.display = 'none';
 
     // Optional: show greeting
-    const userInfo = document.getElementById('userInfo');
-    if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
+    //const userInfo = document.getElementById('userInfo');
+    //if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
+    document.getElementById("greeting").textContent = user.name;
+    document.getElementById("pfpid").src = user.picture;
   }
 
   // Setup logout
@@ -112,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
             display:flex;
             justify-content:start;
             align-items: center;
-            background-color: #333;
+            background-color: #333333;
             padding: 10px 20px;
             font-family: "ComicSansCustom", cursive;
             color: white;
@@ -120,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .gumb{
             margin-left: auto;
             align-items: right;
-            background-color: #4CAF50;
+            background-color: #4caf50;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -131,6 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
             cursor: pointer;
             border-radius: 8px;
             font-family: "ComicSansCustom", cursive;
+            transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+        .gumb:hover{
+            scale: 1.1;
+            background-color: #2cad4e;
         }
         .leftA{
             text-align: left;
@@ -145,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
             color: white;
         }
         .cardCont {
-            display: flex;
+            display: grid;
             justify-content: center;
             align-items: center;
             height: calc(100% - 70px); /* adjust if navbar height changes */
@@ -156,15 +163,33 @@ document.addEventListener("DOMContentLoaded", () => {
         .card {
             background-color: #333; /* same as navbar */
             padding: 40px 30px;
+            margin-bottom: 2vh;
             border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            max-width: 320px;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
             width: 100%;
             text-align: center;
             font-family: "ComicSansCustom", cursive;
             color: white;
+            outline: beige solid 5px;
         }
-
+        .cardImg{
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            animation: rotation 2s infinite linear; 
+            overflow: hidden;      
+            position: relative;
+            object-fit: cover;
+            object-position: center center;
+            outline: black solid 2px;
+        }
+        .fortnitetextlol{
+            display: inline-block;
+            transform: rotate(-23deg);
+            scale: 1.5;
+        }
         @keyframes rotation {
             0% {
                 --gradient-angle: 0deg;
@@ -204,6 +229,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     data-logo_alignment="left">
                 </div>
             <button id="logoutBtn"class="gumb" style="display:none;">Logout</button>
+        </div>
+        <div class="card" style="background-color: #9eb77b;  ">
+            <img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
+            <label class="fortnitetextlol" id="imeid">IME</label>
         </div>
     </div>
 </body>
