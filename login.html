@@ -42,6 +42,7 @@ function handleCredentialResponse(response) {
   //if (userInfo) userInfo.textContent = `Pozdravljen, ${data.name}!`;
   document.getElementById("imeid").textContent = user.name;
   document.getElementById("pfpid").src = user.picture;
+  Location.reload();
 }
 
 function parseJwt(token) {
