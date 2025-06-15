@@ -34,14 +34,16 @@ function handleCredentialResponse(response) {
 
   // Save user info to localStorage
   localStorage.setItem("user", JSON.stringify(data));
-
+	if(localStorage.getItem("name") == null){
+		localStorage.setItem("name", data.name);
+	}else{document.getElementById("nameParam").value = data.name;}
   // Show logout button and hide login
 
   changeTheData(data.name,data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
   document.getElementById("nameParam").style.display = 'block';
-	document.getElementById("nameParam").textContent = data.name;
+
   document.getElementById("nameParamButton").style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
@@ -68,6 +70,9 @@ function parseJwt(token) {
 document.addEventListener("DOMContentLoaded", () => {
   // Check if user is already stored
   const user = JSON.parse(localStorage.getItem("user"));
+	if(localStorage.getItem("name") == null){
+		localStorage.setItem("name", user.name);
+	}else{document.getElementById("nameParam").value = user.name;}
   if (user) {
 	// Restore login UI state
 	document.getElementById('logoutBtn').style.display = 'inline-block';
@@ -80,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	changeTheData(user.name,user.picture);
 	document.getElementById("helperDiv").style.display = 'inline-block';
 	document.getElementById("nameParam").style.display = 'block';
-	document.getElementById("nameParam").textContent = user.name;
+	//document.getElementById("nameParam").value = user.name;
 	document.getElementById("nameParamButton").style.display = 'inline-block';
   //const coolAuthCard = document.createElement('div');
   //coolAuthCard.classList.add('card');
@@ -110,6 +115,10 @@ function authAntonukmarec(){
 	//.join(".");
 	//let finalRun = mainrun1 + "@antonukmar.si";
 
+}
+function changeCustName(){
+	localStorage.setItem("name", document.getElementById("nameParam").value);
+	document.getElementById("nameParam").value = document.getElementById("nameParam").value;
 }
 </script>
 	<style>
@@ -303,8 +312,9 @@ function authAntonukmarec(){
 					data-logo_alignment="left">
 				</div>
 			<button id="logoutBtn"class="gumb" style="display:none;">Logout</button>
+			<label id="nameParam" style="display: none;">Spremenite Svoje Ime:</label>
 			<input class="input"type="text" id="nameParam" style="display: none;"></input>
-			<button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton">Spremeni Ime!</button>
+			<button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton" onclick="changeCustName()">Spremeni Ime!</button>
 		</div>
 		<div class="card" style="background-color: #9eb77b;  ">
 			<img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
