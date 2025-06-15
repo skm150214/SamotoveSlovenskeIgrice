@@ -36,7 +36,7 @@ function handleCredentialResponse(response) {
   localStorage.setItem("user", JSON.stringify(data));
 	if(localStorage.getItem("name") == null){
 		localStorage.setItem("name", data.name);
-	}else{document.getElementById("nameParam").value = data.name;}
+	}
   // Show logout button and hide login
 
   changeTheData(data.name,data.picture);
@@ -44,6 +44,7 @@ function handleCredentialResponse(response) {
   document.getElementById('logoutBtn').style.display = 'inline-block';
 	document.getElementById("nameParamLabel").style.display = 'block';
   document.getElementById("nameParam").style.display = 'block';
+	document.getElementById("nameParam").value = localStorage.getItem("name");
   document.getElementById("nameParamButton").style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem("user"));
 	if(localStorage.getItem("name") == null){
 		localStorage.setItem("name", user.name);
-	}else{document.getElementById("nameParam").value = user.name;}
+	}//else{document.getElementById("nameParam").value = user.name;}
   if (user) {
 	// Restore login UI state
 	document.getElementById('logoutBtn').style.display = 'inline-block';
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("helperDiv").style.display = 'inline-block';
 	document.getElementById("nameParamLabel").style.display = 'block';
 	document.getElementById("nameParam").style.display = 'block';
-	//document.getElementById("nameParam").value = user.name;
+	document.getElementById("nameParam").value = localStorage.getItem("name");
 	document.getElementById("nameParamButton").style.display = 'inline-block';
   //const coolAuthCard = document.createElement('div');
   //coolAuthCard.classList.add('card');
