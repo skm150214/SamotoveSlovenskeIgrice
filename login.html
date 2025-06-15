@@ -40,8 +40,9 @@ function handleCredentialResponse(response) {
   changeTheData(data.name,data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
-  document.getElementById("nameParam").style.display = 'flex';
-  document.getElementById("nameParamButton").style.display = 'flex';
+  document.getElementById("nameParam").style.display = 'inline-block';
+    document.getElementById("nameParam").textContent = data.name;
+  document.getElementById("nameParamButton").style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
 
@@ -78,7 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
     changeTheData(user.name,user.picture);
     document.getElementById("helperDiv").style.display = 'inline-block';
-    document.getElementById("nameParam").style.display = 'block';
+    document.getElementById("nameParam").style.display = 'inline-block';
+    document.getElementById("nameParam").textContent = user.name;
     document.getElementById("nameParamButton").style.display = 'inline-block';
   //const coolAuthCard = document.createElement('div');
   //coolAuthCard.classList.add('card');
@@ -183,6 +185,8 @@ function authAntonukmarec(){
             align-items: right;
             background-color: #376d94;
             border: none;
+            margin: 2vh;
+            outline: black solid 0.5vh;
         }
         .leftA{
             text-align: left;
