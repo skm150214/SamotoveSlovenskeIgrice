@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
     changeTheData(user.name,user.picture);
     document.getElementById("helperDiv").style.display = 'inline-block';
+    document.getElementById("nameParam").style.display = 'grid';
+    document.getElementById("nameParamButton").style.display = 'grid';
   //const coolAuthCard = document.createElement('div');
   //coolAuthCard.classList.add('card');
   //coolAuthCard.style.backgroundColor = '#3de7e1';
@@ -167,6 +169,20 @@ function authAntonukmarec(){
         .gumb:hover{
             scale: 1.1;
             background-color: #2cad4e;
+        }
+        .input{
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: "ComicSansCustom", cursive;
+            transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            padding: 15px 32px;
+            margin-left: auto;
+            align-items: right;
+            background-color: #376d94;
+            border: none;
         }
         .leftA{
             text-align: left;
@@ -262,7 +278,7 @@ function authAntonukmarec(){
                     data-logo_alignment="left">
                 </div>
             <button id="logoutBtn"class="gumb" style="display:none;">Logout</button>
-            <input type="text" id="nameParam" style="display: none;"></input>
+            <input class="input"type="text" id="nameParam" style="display: none;"></input>
             <button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton">Spremeni Ime!</button>
         </div>
         <div class="card" style="background-color: #9eb77b;  ">
