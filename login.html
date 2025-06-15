@@ -37,13 +37,11 @@ function handleCredentialResponse(response) {
 
   // Show logout button and hide login
 
-  changeTheData(data.name,data.picture);
-  const coolAuthCard = document.createElement('div');
-  coolAuthCard.classList.add('card');
-  coolAuthCard.style.backgroundColor = '#3de7e1';
-  coolAuthCard.id = 'coolAuthCardID';
-  document.getElementById("helperDiv").appendChild(coolAuthCard);
+  changeTheData(user.name,user.picture);
+  document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
+  document.getElementById("NameParam").style.display = 'inline-block';
+  document.getElementById("NameParamButton").style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
 
@@ -78,12 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Optional: show greeting
     //const userInfo = document.getElementById('userInfo');
     //if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
-      changeTheData(user.name,user.picture);
-  const coolAuthCard = document.createElement('div');
-  coolAuthCard.classList.add('card');
-  coolAuthCard.style.backgroundColor = '#3de7e1';
-  coolAuthCard.id = 'coolAuthCardID';
-  document.getElementById("helperDiv").appendChild(coolAuthCard);
+    changeTheData(user.name,user.picture);
+    document.getElementById("helperDiv").style.display = 'inline-block';
+  //const coolAuthCard = document.createElement('div');
+  //coolAuthCard.classList.add('card');
+  //coolAuthCard.style.backgroundColor = '#3de7e1';
+  //coolAuthCard.id = 'coolAuthCardID';
+  //document.getElementById("helperDiv").appendChild(coolAuthCard);
   }
 
   // Setup logout
@@ -94,6 +93,20 @@ document.addEventListener("DOMContentLoaded", () => {
     location.reload(); // refresh to reset UI
   });
 });
+function authAntonukmarec(){
+    alert("ta gumb ševedno ni narejen :(");
+    //const user = JSON.parse(localStorage.getItem("user"));
+    //let mainrun1 = user.name
+    //.toLowerCase()
+    //.replace(/č/g, 'c')
+    //.replace(/š/g, 's')
+    //.replace(/ž/g, 'z')
+    //.split(/\s+/)
+    //.slice(0, 2)
+    //.join(".");
+    //let finalRun = mainrun1 + "@antonukmar.si";
+
+}
 </script>
     <style>
         @property --gradient-angle {
@@ -207,6 +220,9 @@ document.addEventListener("DOMContentLoaded", () => {
             scale: 1.5;
             color:black;
         }
+        .wip{
+            filter: grayscale(100%);
+        }
         @keyframes rotation {
             0% {
                 --gradient-angle: 0deg;
@@ -246,13 +262,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     data-logo_alignment="left">
                 </div>
             <button id="logoutBtn"class="gumb" style="display:none;">Logout</button>
+            <input type="text" id="nameParam" style="display: none;"></input>
+            <button class="gumb" style="background-color: #e2de1d; display: none;" id="nameParamButton">Spremeni Ime!</button>
         </div>
         <div class="card" style="background-color: #9eb77b;  ">
             <img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
             <label class="fortnitetextlol" id="imeid">IME</label>
         </div>
-        <div id="helperDiv">
-
+        <div id="helperDiv" >
+            <div class="card" id="coolAuthCardId" style="background-color:#3de7e1;">
+                <button class="gumb wip" id="antonukmarecAuthButton"  style="background-color:#1a85f0;" onclick="authAntonukmarec();">Auth šole Antona Ukmarja</button>
+            </div>
         </div>
     </div>
 </body>
