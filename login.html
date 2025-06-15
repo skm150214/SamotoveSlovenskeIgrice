@@ -40,8 +40,8 @@ function handleCredentialResponse(response) {
   changeTheData(data.name,data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
-  document.getElementById("nameParam").style.display = 'grid';
-  document.getElementById("nameParamButton").style.display = 'grid';
+  document.getElementById("nameParam").style.display = 'flex';
+  document.getElementById("nameParamButton").style.display = 'flex';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
 
@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
     changeTheData(user.name,user.picture);
     document.getElementById("helperDiv").style.display = 'inline-block';
-    document.getElementById("nameParam").style.display = 'grid';
-    document.getElementById("nameParamButton").style.display = 'grid';
+    document.getElementById("nameParam").style.display = 'flex';
+    document.getElementById("nameParamButton").style.display = 'flex';
   //const coolAuthCard = document.createElement('div');
   //coolAuthCard.classList.add('card');
   //coolAuthCard.style.backgroundColor = '#3de7e1';
