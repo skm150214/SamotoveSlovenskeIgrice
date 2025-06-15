@@ -24,7 +24,10 @@
 
     //  google.accounts.id.prompt(); // optional — shows One Tap prompt
     //};
-
+function changeTheData(name,pict){
+  document.getElementById("imeid").textContent = name;
+  document.getElementById("pfpid").src = pict;
+}
 function handleCredentialResponse(response) {
   const data = parseJwt(response.credential);
   console.log("Logged in as:", data.name);
@@ -33,8 +36,13 @@ function handleCredentialResponse(response) {
   localStorage.setItem("user", JSON.stringify(data));
 
   // Show logout button and hide login
-  document.getElementById("imeid").textContent = data.name;
-  document.getElementById("pfpid").src = data.picture;
+
+  changeTheData(data.name,data.picture);
+  const coolAuthCard = document.createElement('div');
+  coolAuthCard.classList.add('card');
+  coolAuthCard.style.backgroundColor = '#3de7e1';
+  coolAuthCard.id = 'coolAuthCardID';
+  document.getElementById("helperDiv").appendChild(coolAuthCard);
   document.getElementById('logoutBtn').style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
@@ -70,8 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Optional: show greeting
     //const userInfo = document.getElementById('userInfo');
     //if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
-    document.getElementById("imeid").textContent = user.name;
-    document.getElementById("pfpid").src = user.picture;
+      changeTheData(user.name,user.picture);
+  const coolAuthCard = document.createElement('div');
+  coolAuthCard.classList.add('card');
+  coolAuthCard.style.backgroundColor = '#3de7e1';
+  coolAuthCard.id = 'coolAuthCardID';
+  document.getElementById("helperDiv").appendChild(coolAuthCard);
   }
 
   // Setup logout
@@ -238,6 +250,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="card" style="background-color: #9eb77b;  ">
             <img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
             <label class="fortnitetextlol" id="imeid">IME</label>
+        </div>
+        <div id="helperDiv">
+
         </div>
     </div>
 </body>
