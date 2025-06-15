@@ -42,7 +42,7 @@ function handleCredentialResponse(response) {
   changeTheData(data.name,data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
-	document.getElementById("nameParamLabel").style.display = 'inline-block';
+	document.getElementById("nameParamLabel").style.display = 'block';
   document.getElementById("nameParam").style.display = 'block';
   document.getElementById("nameParamButton").style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	//if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
 	changeTheData(user.name,user.picture);
 	document.getElementById("helperDiv").style.display = 'inline-block';
-	document.getElementById("nameParamLabel").style.display = 'inline-block';
+	document.getElementById("nameParamLabel").style.display = 'block';
 	document.getElementById("nameParam").style.display = 'block';
 	//document.getElementById("nameParam").value = user.name;
 	document.getElementById("nameParamButton").style.display = 'inline-block';
