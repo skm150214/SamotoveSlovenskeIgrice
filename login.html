@@ -151,8 +151,8 @@ function authAntonukmarec(){
             color: white;
         }
         .gumb{
-            margin-left: 50%;
-            align-items: center;
+            margin-left: auto;
+            align-items: right;
             background-color: #4caf50;
             border: none;
             color: white;
@@ -205,7 +205,7 @@ function authAntonukmarec(){
         }
 
             
-        .card {
+        .oldCard {
             background-color: #333; /* same as navbar */
             padding: 40px 30px;
             margin-bottom: 2vh;
@@ -216,6 +216,24 @@ function authAntonukmarec(){
             font-family: "ComicSansCustom", cursive;
             color: white;
             outline: beige solid 5px;
+        }
+        .card {
+            background-color: #333; /* same as navbar */
+            padding: 40px 30px;
+            margin-bottom: 2vh;
+            border-radius: 16px;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
+            width: 100%;
+            font-family: "ComicSansCustom", cursive;
+            color: white;
+            outline: beige solid 5px;
+
+            /* Center content */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* vertical centering */
+            align-items: center;     /* horizontal centering */
+            text-align: center;
         }
         .cardImg{
             width: 120px;
@@ -254,7 +272,7 @@ function authAntonukmarec(){
     <div class="zgori">
         <h1>Samotove Šolske Igrice</h1>
         <a class="leftA"> Login</a>
-        <button class="gumb" onclick="window.location.href = 'index.html';" style="margin-left: auto;">Nazaj</button>
+        <button class="gumb" onclick="window.location.href = 'index.html';">Nazaj</button>
 
     </div>
     <div class="cardCont">
@@ -281,7 +299,7 @@ function authAntonukmarec(){
             <input class="input"type="text" id="nameParam" style="display: none;"></input>
             <button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton">Spremeni Ime!</button>
         </div>
-        <div class="card" style="background-color: #9eb77b;  ">
+        <div class="oldCard" style="background-color: #9eb77b;  ">
             <img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
             <label class="fortnitetextlol" id="imeid">IME</label>
         </div>
