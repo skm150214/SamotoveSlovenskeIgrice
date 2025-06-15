@@ -40,8 +40,8 @@ function handleCredentialResponse(response) {
   changeTheData(data.name,data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
-  document.getElementById("nameParam").style.display = 'inline-block';
-  document.getElementById("nameParamButton").style.display = 'inline-block';
+  document.getElementById("nameParam").style.display = 'grid';
+  document.getElementById("nameParamButton").style.display = 'grid';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
 
@@ -263,7 +263,7 @@ function authAntonukmarec(){
                 </div>
             <button id="logoutBtn"class="gumb" style="display:none;">Logout</button>
             <input type="text" id="nameParam" style="display: none;"></input>
-            <button class="gumb" style="background-color: #e2de1d; display: none;" id="nameParamButton">Spremeni Ime!</button>
+            <button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton">Spremeni Ime!</button>
         </div>
         <div class="card" style="background-color: #9eb77b;  ">
             <img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
