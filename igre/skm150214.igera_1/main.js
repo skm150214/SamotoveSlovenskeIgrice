@@ -269,8 +269,8 @@ let timeout2;
 let timeout3;
 var alreadyOnTheTopWhileDied = false;
 function doRandomMove(){
-  //xGravity = (Math.floor(Math.random() * 2)-1) * 3; 
-  //zGravity = (Math.floor(Math.random() * 2)-1) * 3; 
+  xGravity += (Math.floor(Math.random() * 2)-1) * 3; 
+  zGravity += (Math.floor(Math.random() * 2)-1) * 3; 
 }
 function animate() {
   pulseTime+=pulseChng*10 + (reseneTocke * (1-(1/reseneTocke)));
