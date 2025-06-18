@@ -39,13 +39,14 @@ function handleCredentialResponse(response) {
 	}
   // Show logout button and hide login
 
-  changeTheData(data.name,data.picture);
+  changeTheData(localStorage.getItem("name")  ,data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
 	document.getElementById("nameParamLabel").style.display = 'block';
   document.getElementById("nameParam").style.display = 'block';
 	document.getElementById("nameParam").value = localStorage.getItem("name");
   document.getElementById("nameParamButton").style.display = 'inline-block';
+  document.getElementById("helperDiv").style.display = 'inline-block';
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
 
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("nameParam").style.display = 'block';
 	document.getElementById("nameParam").value = localStorage.getItem("name");
 	document.getElementById("nameParamButton").style.display = 'inline-block';
+	document.getElementById("helperDiv").style.display = 'inline-block';
   //const coolAuthCard = document.createElement('div');
   //coolAuthCard.classList.add('card');
   //coolAuthCard.style.backgroundColor = '#3de7e1';
@@ -265,6 +267,7 @@ function changeCustName(){
 			object-fit: cover;
 			object-position: center center;
 			outline: black solid 2px;
+			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.55);
 		}
 		.fortnitetextlol{
 			display: inline-block;
@@ -322,7 +325,8 @@ function changeCustName(){
 			<img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
 			<label class="fortnitetextlol" id="imeid">IME</label>
 		</div>
-		<div id="helperDiv" >
+		<a style="color:#b4b4b4;">(id)</a>
+		<div id="helperDiv" style="display: none;">
 			<div class="card" id="coolAuthCardId" style="background-color:#3de7e1;">
 				<button class="gumb wip" id="antonukmarecAuthButton"  style="background-color:#1a85f0;" onclick="authAntonukmarec();">Auth šole Antona Ukmarja</button>
 			</div>

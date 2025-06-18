@@ -54,10 +54,21 @@
   </style>
 </head>
 <body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get('game');
+    const gameFrame = document.createElement('iframe');
+    gameFrame.src = "igre/" + gameId + "/main.html";
+    document.getElementById("gameFrameDiv").appendChild(gameFrame);
+    //   <iframe src="main.html"></iframe>
+    /* here will game iframe go */ //why dont ts work in html
+  </script>
   <div class="zgori">
     <button class="button" onclick="window.location.href = '/';">Nazaj</button>
   </div>
-  <iframe src="main.html"></iframe>
+  <div id="gameFrameDiv">
+
+  </div>
 
 </body>
 </html>
