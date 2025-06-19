@@ -59,12 +59,12 @@
     const gameId = params.get('game');
     const gameFrame = document.createElement('iframe');
     gameFrame.src = "" + gameId + "/main.html";
-    document.body.appendChild(gameFrame);
+    document.getElementById("gameFrameDiv").appendChild(gameFrame);
     //   <iframe src="main.html"></iframe>
     /* here will game iframe go */ //why dont ts work in html
   </script>
   <div class="zgori">
-    <button class="button" onclick="window.location.href = 'index.html';">Nazaj</button>
+    <button class="button" onclick="window.location.href = '../index.html';">Nazaj</button>
   </div>
   <div id="gameFrameDiv">
 
