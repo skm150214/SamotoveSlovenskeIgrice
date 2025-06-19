@@ -58,8 +58,8 @@
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get('game');
     const gameFrame = document.createElement('iframe');
-    gameFrame.src = "igre" + gameId + "/main.html";
-    //document.body.appendChild(gameFrame);
+    gameFrame.src = "igre/" + gameId + "/main.html";
+    document.body.appendChild(gameFrame);
     //   <iframe src="main.html"></iframe>
     /* here will game iframe go */ //why dont ts work in html
   </script>
