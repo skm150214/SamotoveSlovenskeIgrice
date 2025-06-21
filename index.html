@@ -76,14 +76,14 @@
             flex-wrap: nowrap;
             gap: 2vh;
             padding: 0 2vh;
-            background-color: cadetblue;
+            /*background-color: cadetblue; */
         }
 
         .slika-wrapper {
             position: relative;
             border-radius: 1vh;
-            width: 20vh;
-            height: 20vh;
+            width: 12vh;
+            height: 12vh;
         }
 
         .slika-wrapper::before,
@@ -112,6 +112,15 @@
             display: block;
             cursor: pointer;
         }
+        .nameText{
+            font-family: "ComicSansCustom", cursive;
+            margin: 0.5vh;
+            color: #534c5f;
+            font-weight: normal;
+            font-size: small;
+            -webkit-text-stroke: black 0.75vh;
+            
+        }
 
         @keyframes rotation {
             0% {
@@ -134,7 +143,7 @@
         </div>
     </div>
     <div class="slikacontainer">
-        <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a> Igra</a></div>
+        <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a class="nameText"> Igra</a></div>
         <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"><a> Igra</a></div>
         <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"><a> Igra</a></div>
     </div>
