@@ -124,6 +124,7 @@ function changeCustName(){
 	localStorage.setItem("name", document.getElementById("nameParam").value);
 	document.getElementById("imeid").textContent = document.getElementById("nameParam").value;
 }
+document.getElementById("imeid").textContent = localStorage.getItem("name");
 </script>
 	<style>
 		@property --gradient-angle {
@@ -219,6 +220,7 @@ function changeCustName(){
 			align-items: center;
 			height: calc(100% - 70px); /* adjust if navbar height changes */
 			padding: 20px;
+			margin-top: 1vh;
 		}
 
 			
