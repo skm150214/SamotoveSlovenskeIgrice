@@ -39,29 +39,28 @@ function handleCredentialResponse(response) {
   }
 
   // Pošlji podatke na strežnik, da shraniš/ustvariš uporabnika
-  fetch("save_user.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: data.name,
-      email: data.email
-    })
+ fetch('https://samotovesi.si/save_user.php', {
+  method: 'POST', // <-- to je nujno
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: data.name,
+    email: data.email
   })
-  .then(res => res.json())
-  .then(result => {
-    if (result.success) {
-      // Shrani dodeljen UID v localStorage
-      localStorage.setItem("uid", result.uid);
-      console.log("Dodeljen UID:", result.uid);
-    } else {
-      console.error("Napaka pri shranjevanju uporabnika:", result.message);
-    }
-  })
-  .catch(error => {
-    console.error("Napaka v fetch:", error);
-  });
+})
+.then(res => res.json())
+.then(result => {
+  if (result.success) {
+    localStorage.setItem("uid", result.uid);
+    console.log("Shranjeni UID:", result.uid);
+  } else {
+    console.error("Napaka pri shrani:", result.error);
+  }
+})
+.catch(err => {
+  console.error("Fetch napaka:", err);
+});
 
   // Posodobi UI
   changeTheData(localStorage.getItem("name"), data.picture);
