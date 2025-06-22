@@ -32,29 +32,48 @@ function handleCredentialResponse(response) {
   const data = parseJwt(response.credential);
   console.log("Logged in as:", data.name);
 
-  // Save user info to localStorage
+  // Shrani osnovne podatke v localStorage
   localStorage.setItem("user", JSON.stringify(data));
-	if(localStorage.getItem("name") == null){
-		localStorage.setItem("name", data.name);
-	}
-  // Show logout button and hide login
+  if (localStorage.getItem("name") == null) {
+    localStorage.setItem("name", data.name);
+  }
 
-  changeTheData(localStorage.getItem("name")  ,data.picture);
+  // Pošlji podatke na strežnik, da shraniš/ustvariš uporabnika
+  fetch("save_user.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: data.name,
+      email: data.email
+    })
+  })
+  .then(res => res.json())
+  .then(result => {
+    if (result.success) {
+      // Shrani dodeljen UID v localStorage
+      localStorage.setItem("uid", result.uid);
+      console.log("Dodeljen UID:", result.uid);
+    } else {
+      console.error("Napaka pri shranjevanju uporabnika:", result.message);
+    }
+  })
+  .catch(error => {
+    console.error("Napaka v fetch:", error);
+  });
+
+  // Posodobi UI
+  changeTheData(localStorage.getItem("name"), data.picture);
   document.getElementById("helperDiv").style.display = 'inline-block';
   document.getElementById('logoutBtn').style.display = 'inline-block';
-	document.getElementById("nameParamLabel").style.display = 'block';
+  document.getElementById("nameParamLabel").style.display = 'block';
   document.getElementById("nameParam").style.display = 'block';
-	document.getElementById("nameParam").value = localStorage.getItem("name");
+  document.getElementById("nameParam").value = localStorage.getItem("name");
   document.getElementById("nameParamButton").style.display = 'inline-block';
-  document.getElementById("helperDiv").style.display = 'inline-block';
+
   const loginBtn = document.querySelector('.g_id_signin');
   if (loginBtn) loginBtn.style.display = 'none';
-
-  // Optional: show greeting
-  //const userInfo = document.getElementById('userInfo');
-  //if (userInfo) userInfo.textContent = `Pozdravljen, ${data.name}!`;
-
-  //Location.reload();
 }
 
 function parseJwt(token) {
