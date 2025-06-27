@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+	<meta charset="UTF-8">
+	<title>Samotove Novice AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+	<style>
+		@property --gradient-angle {
+			syntax: "<angle>";
+			initial-value: 0deg;
+			inherits: false;
+		}
+		@font-face {
+			font-family: "ComicSansBold";
+			src: url("../../fonts/comicsans.ttf") format("truetype");
+			font-weight: bold;
+		}
+			* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+
+		html {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		body {
+			background-color: lightslategray;
+			background-size: 100% 100%;
+			background-attachment: fixed;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.zgori {
+			display:flex;
+			justify-content:start;
+			align-items: center;
+			background-color: #333333;
+			padding: 10px 20px;
+			font-family: "ComicSansCustom", cursive;
+			color: white;
+		}
+		.gumb{
+
+			align-items: center;
+			background-color: #4caf50;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			cursor: pointer;
+			border-radius: 8px;
+			font-family: "ComicSansCustom", cursive;
+			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+		}
+		.gumb:hover{
+			scale: 1.1;
+			background-color: #2cad4e;
+		}
+		.input{
+			cursor: pointer;
+			border-radius: 8px;
+			font-family: "ComicSansCustom", cursive;
+			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			padding: 15px 32px;
+			margin-left: auto;
+			align-items: right;
+			background-color: #376d94;
+			border: none;
+			margin: 2vh;
+			outline: black solid 0.5vh;
+		}
+		.leftA{
+			text-align: left;
+			font-family: sans-serif;
+		}
+		.login{
+			align-items: center;
+			margin-top: 5vh;
+			background-color: #333;
+			text-align: center;
+			font-family: "ComicSansCustom", cursive;
+			color: white;
+		}
+		.cardCont {
+			display: flex;
+            flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: calc(100% - 70px);
+			padding: 20px;
+			margin-top: 1vh;
+		}
+
+			
+		.card {
+			background-color: #3e6eb3;
+			padding: 40px 30px;
+			margin-bottom: 2vh;
+			border-radius: 16px;
+			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
+			text-align: center;
+			font-family: "ComicSansCustom", cursive;
+			color: black;
+            min-height: 75vh;
+            min-width: calc(100% - 10vh);
+            max-width: calc(100% - 10vh);
+			outline: black solid 2px;
+            /*background: linear-gradient(from -37deg, black, #2e2c2c);*/
+			/*align-items: center;*/
+            display: flex;
+            flex-direction: column;
+		}
+		.cardImg{
+			width: 160px;
+			height: 120px;
+			border-radius: 2px;
+			margin: 0 auto;
+			animation: rotation 2s infinite linear; 
+			overflow: hidden;      
+			position: relative;
+			object-fit:contain;
+			object-position: center center;
+			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.55);
+            background-image: linear-gradient(164deg, wheat, white);
+            margin-left: 1vh;
+            margin-right: 1vh;
+		}
+		.fortnitetextlol{
+			display: inline-block;
+			transform: rotate(-23deg) translateY(0.275vh);
+			scale: 1.5;
+			color:black;
+		}
+		.wip{
+			filter: grayscale(100%);
+		}
+        .ttl{
+            /*text-align: left; */
+            color:wheat;
+            -webkit-text-stroke: black 0.25vh; 
+        }
+        .har{
+            color: black;
+            border: 0;
+            height: 2px;
+            background: #333;
+            background-image: linear-gradient(to right, #3e6eb3, #bec5c9, #3e6eb3);
+
+        }
+        .tatxtcont {
+            text-align: left;
+            font-family: Arial, Helvetica, sans-serif;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            white-space: normal;
+            display: block;
+            width: 100%;
+            margin: 0;
+            margin-top: 1vh;
+        }
+        .imgdiv{
+         display: block;
+        }
+		@keyframes rotation {
+			0% {
+				--gradient-angle: 0deg;
+			}
+			100% {
+				--gradient-angle: 360deg;
+			}
+		}
+	</style>
+
+</head>
+<body>
+	<div class="zgori">
+		<h1>Samotove Šolske Igrice</h1>
+		<a class="leftA"> Novice</a>
+		<button class="gumb" onclick="window.location.href = 'index.html';"style="margin-left: auto;">Nazaj</button>
+
+	</div>
+	<div class="cardCont">
+		<div class="card">
+        <h1 class="ttl">Novice!!!!!!</h1>
+        <hr class="har"></hr>
+        <a class="tatxtcont">text tuki je ful velik!!!!!!!!!! <br>break</br> tungutngunt sahur</a>
+        <hr class="har" style="margin-top: auto;margin-bottom: 3vh;"></hr>
+            <div class="imgdiv">
+                <img src="obama.jpg" class="cardImg"></img>
+                <img src="fish.jpg" class="cardImg"></img>
+                <img src="rah.jpg" class="cardImg"></img>
+            </div>
+
+		</div>
+
+	</div>
+</body>
+</html>
