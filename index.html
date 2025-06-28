@@ -84,7 +84,7 @@
             border-radius: 1vh;
             width: 17vh;
             height: 17vh;
-            margin-bottom: 1vh;
+            margin-bottom: 2vh;
         }
 
         .slika-wrapper::before,
@@ -112,13 +112,15 @@
             z-index: 1;
             display: block;
             cursor: pointer;
+            margin-bottom: 1vh;
         }
         .nameText{
             font-family: "ComicSansCustom", cursive;
-            color: #534c5f;
+            margin-top: 1vh;
+            color: #c0b5d3;
             font-weight: bold;
-            font-size: 2.5vh;
-            -webkit-text-stroke: black 0.15vh;
+            font-size: 2.75vh;
+            -webkit-text-stroke: black 0.2vh;
             
         }
 
@@ -144,9 +146,10 @@
     </div>
     <div class="slikacontainer">
         <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a class="nameText"> Igra</a></div>
-        <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"><a> Igra</a></div>
-        <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"><a> Igra</a></div>
+        <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"><a class="nameText"> Igra</a></div>
+        <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"><a class="nameText"> Igra</a></div>
     </div>
+    
     <script>
         //var fav = document.getElementById("a");
         //fav.style.setProperty('--gradient-angle', '90deg');

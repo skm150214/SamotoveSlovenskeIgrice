@@ -3,6 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Samotove Novice AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+	<script>
+		function doImgThingy(a) {
+			const divselecthelper = document.getElementById("slieke");
+			const selectedimg = divselecthelper.children[a];
+			const slika = document.getElementById("taslika");
+			slika.src = selectedimg.src;
+			const bigimgdiv = document.getElementById("bigimgdiv");
+			/*const bigslikica = document.createElement("img");
+			bigslikica.src = selectedimg.src;
+			bigimgdiv.innerHTML = "";
+			bigimgdiv.appendChild(bigslikica);
+			bigslikica.classList.add("bigslika");*/
+			console.log("naredili stvar");
+			bigimgdiv.style.display = "flex";
+		};
+		function hide(){
+			const bigimgdiv = document.getElementById("bigimgdiv");
+			bigimgdiv.style.display = "none";
+		}
+	</script>
 	<style>
 		@property --gradient-angle {
 			syntax: "<angle>";
@@ -134,6 +154,17 @@
             background-image: linear-gradient(164deg, wheat, white);
             margin-left: 1vh;
             margin-right: 1vh;
+			cursor: pointer;
+			transition: all 0.05s ease-in;
+		}
+		.cardImg:hover{
+			scale: 1.1;
+			background-image: linear-gradient(var(--gradient-angle), wheat, #6dda81);
+			animation: rotation 1.25s cubic-bezier(0.78, 0.12, 0.98, 0.74) infinite;
+			box-shadow: 10px 10px 20px rgba(0, 0, 0, 1);
+		}
+		.cardImg:active{
+			scale: 1.15;
 		}
 		.fortnitetextlol{
 			display: inline-block;
@@ -171,7 +202,57 @@
         .imgdiv{
          display: block;
         }
-		@keyframes rotation {
+		.bigslika{
+			/*min-width: calc(100% - 10vh);
+            max-width: calc(100% - 10vh);*/
+			width: 75vh;
+			border-radius: 20px;
+			margin: 0 auto;
+			align-items: center;
+			display: block;
+			position: relative;
+			z-index: 1;
+			/*outline: #49ed51 solid 0.25vh;*/
+			box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.45);
+		}
+		.bigimgdivwrap{
+			/*display: inline-block;*/
+			position: relative;
+			z-index: 0;
+		}
+		.bigimgdivwrap::before,
+        .bigimgdivwrap::after {
+            content: "";
+            position: absolute;
+            inset: -0.5vh;
+            z-index: 0;
+            background: conic-gradient(from var(--gradient-angle), red, yellow, lime, cyan, blue, magenta, red);
+            border-radius: 20px;
+            animation: rotation 4.5s cubic-bezier(0.21, 0.56, 0.5, 1) infinite;
+        }
+		.bigimgclass{
+			  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+		}
+		.xtgumb{
+			margin: 2.5vh auto;
+			width: 5vh;
+			height: 5vh;
+			border-radius: 100%;
+			text-align: center;
+			color: white;
+			background-color: rgba(0, 0, 0, 0);
+			scale: 1.000001;
+			background: conic-gradient(from 23deg, #2a2626, #000000, #2a2626, #808080, #2a2626, #000000, #2a2626, #808080, #2a2626, #000000, #2a2626,  #808080, #2a2626, #000000, #2a2626,  #808080, #2a2626, #000000, #2a2626);
+			transition: all 0.4s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+		}
+		.xtgumb:hover{
+			scale: 1.5;
+			transform: rotate(180deg);
+		}
+				@keyframes rotation {
 			0% {
 				--gradient-angle: 0deg;
 			}
@@ -193,16 +274,21 @@
 		<div class="card">
         <h1 class="ttl">Novice!!!!!!</h1>
         <hr class="har"></hr>
-        <a class="tatxtcont">text tuki je ful velik!!!!!!!!!! <br>break</br> tungutngunt sahur</a>
+        <a class="tatxtcont">text tuki je ful velik!!!!!!!!!! <br>break</br> tungutngunt sahur<br>break</a>
         <hr class="har" style="margin-top: auto;margin-bottom: 3vh;"></hr>
-            <div class="imgdiv">
-                <img src="obama.jpg" class="cardImg"></img>
-                <img src="fish.jpg" class="cardImg"></img>
-                <img src="rah.jpg" class="cardImg"></img>
+            <div class="imgdiv" id="slieke">
+                <img src="obama.jpg" class="cardImg" onclick="doImgThingy(0);"></img>
+                <img src="fish.jpg" class="cardImg" onclick="doImgThingy(1);"></img>
+                <img src="rah.jpg" class="cardImg" onclick="doImgThingy(2);"></img>
             </div>
 
 		</div>
-
+		<div id="bigimgdiv" class="bigimgclass"style="display: none;">
+			<div class="bigimgdivwrap">
+				<img class="bigslika" id="taslika"></img>
+			</div>
+			<button class="xtgumb" onclick="hide();">✖</button>
+		</div>
 	</div>
 </body>
 </html>
