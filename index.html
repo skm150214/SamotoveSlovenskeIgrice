@@ -26,14 +26,25 @@
             font-family: Arial, sans-serif;
         }
         body {
-            background-color: lightslategray;
+            background-color: #55ce83;
             background-size: 100% 100%;
             background-attachment: fixed;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
         }
-
+        .main{
+            background-color: lightslategray;
+            /*background-size: 100% 100%;*/
+              display: flex;
+  flex-direction: column;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            width: 100%;
+                  height: 100vh;
+        }
         .zgori {
             display: flex;
             justify-content: space-between;
@@ -101,6 +112,37 @@
         .slika-wrapper::after {
             filter: blur(0.5vh);
         }
+        
+
+
+
+
+
+
+
+        .slika-wrapper2 {
+            position: relative;
+            border-radius: 1vh;
+            width: 17vh;
+            height: 17vh;
+            margin-bottom: 2vh;
+            outline: beige  solid 5px;
+        }
+
+        .slika-wrapper2::before,
+        .slika-wrapper2::after {
+            content: "";
+            position: absolute;
+            inset: calc(-0.5vh - 5px);
+            z-index: 0;
+            background: conic-gradient(from var(--gradient-angle), #eade36, #ffffff, #eade36, #ffffff, #26cee8, #000000,#26cee8, #000000);
+            border-radius: 1.5vh;
+            animation: rotation 4.5s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+        }
+
+        .slika-wrapper2::after {
+            filter: blur(0.5vh);
+        }
 
         .slika {
             position: relative;
@@ -112,7 +154,7 @@
             z-index: 1;
             display: block;
             cursor: pointer;
-            margin-bottom: 1vh;
+            margin-bottom: 0.75vh;
         }
         .nameText{
             font-family: "ComicSansCustom", cursive;
@@ -123,7 +165,13 @@
             -webkit-text-stroke: black 0.2vh;
             
         }
+        .border{
+            /*border-color: crimson;        
+                        border-style: dotted;*/
+            border-bottom:  #6fe66d solid 2vh;
+            border-bottom-style:groove;
 
+        }
         @keyframes rotation {
             0% {
                 --gradient-angle: 0deg;
@@ -144,12 +192,23 @@
         <button class="gumb" onclick="window.location.href = 'login.html';">Račun</button>
         </div>
     </div>
+    <div class="main border">
     <div class="slikacontainer">
-        <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a class="nameText"> Igra</a></div>
-        <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"><a class="nameText"> Igra</a></div>
-        <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"><a class="nameText"> Igra</a></div>
+        <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a class="nameText">Igra</a></div>
+        <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"><a class="nameText">Igra</a></div>
+        <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"><a class="nameText">Igra</a></div>
     </div>
-    
+    </div>
+    <div class="main" style="background-color: #83d4e4;">
+        <div class="slikacontainer"style="display: flex;flex-direction: column;justify-content: center;">
+            <div class="slika-wrapper2" style="height: 40.5vh;width: 35.5vh;margin-top: 10vh;cursor:default;"><img src="rah.jpg" alt="samotova slika tuki" class="slika" ></div>
+            <div style="margin-top: 1vh;display: flex;flex-direction: column;align-items: center;">
+                <a> to stranico je naredu samo k. m.</a>
+                <a> dober dan!</a>
+                
+            </div>
+        </div>
+    </div>
     <script>
         //var fav = document.getElementById("a");
         //fav.style.setProperty('--gradient-angle', '90deg');

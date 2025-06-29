@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>cursore</title>
+        <script>
+            function changeCursor(cursor) {
+                const gumb = document.getElementById("gumb");
+                document.documentElement.style.cursor = cursor;
+                gumb.style.cursor = cursor;
+            }
+            function doCursor(){
+                const idx = Math.floor(Math.random() * 16);
+                switch (idx) {
+        case 0: changeCursor("alias"); break;
+        case 1: changeCursor("all-scroll"); break;
+        case 2: changeCursor("auto"); break;
+        case 3: changeCursor("cell"); break;
+        case 4: changeCursor("context-menu"); break;
+        case 5: changeCursor("col-resize"); break;
+        case 6: changeCursor("copy"); break;
+        case 7: changeCursor("crosshair"); break;
+        case 8: changeCursor("default"); break;
+        case 9: changeCursor("e-resize"); break;
+        case 10: changeCursor("ew-resize"); break;
+        case 11: changeCursor("grab"); break;
+        case 12: changeCursor("grabbing"); break;
+        case 13: changeCursor("help"); break;
+        case 14: changeCursor("move"); break;
+        case 15: changeCursor("n-resize"); break;
+        case 16: changeCursor("ne-resize"); break;
+        case 17: changeCursor("nesw-resize"); break;
+        case 18: changeCursor("ns-resize"); break;
+        case 19: changeCursor("nw-resize"); break;
+        case 20: changeCursor("nwse-resize"); break;
+        case 21: changeCursor("no-drop"); break;
+        case 22: changeCursor("none"); break;
+        case 23: changeCursor("not-allowed"); break;
+        case 24: changeCursor("pointer"); break;
+        case 25: changeCursor("progress"); break;
+        case 26: changeCursor("row-resize"); break;
+        case 27: changeCursor("s-resize"); break;
+        case 28: changeCursor("se-resize"); break;
+        case 29: changeCursor("sw-resize"); break;
+        case 30: changeCursor("text"); break;
+        case 31: changeCursor("vertical-text"); break;
+        case 32: changeCursor("w-resize"); break;
+        case 33: changeCursor("wait"); break;
+        case 34: changeCursor("zoom-in"); break;
+        case 35: changeCursor("zoom-out"); break;
+        default: changeCursor("initial"); break;
+                }
+            }
+        </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                color: white;
+            }
+            .bth{
+                height: 20vh;
+                width: 20vh;
+                border-radius: 10%;
+            }
+        </style>
+    </head>
+    <body>
+        <strong>Cursore</strong>
+        <button class="bth" onclick="doCursor();" id="gumb">random cursor</button>
+    </body>
+
+</html>
