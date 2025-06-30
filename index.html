@@ -72,6 +72,7 @@
             border-radius: 8px;
             font-family: "ComicSansCustom", cursive;
             transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+            margin-right: 1.5vh;
         }
         .gumb:hover{
             scale: 1.1;
@@ -80,7 +81,7 @@
 
         .slikacontainer {
             display: flex;
-            margin-top: 4vh;
+            margin-top: 1vh;
             flex-direction: row;
 
             align-items: center;
@@ -172,6 +173,16 @@
             border-bottom-style:groove;
 
         }
+        .hear{
+            display: flex;
+            margin-top: 1vh;
+            flex-direction: row;
+            font-family: "ComicSansCustom", cursive;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 2vh;
+            padding: 0 2vh;
+        }
         @keyframes rotation {
             0% {
                 --gradient-angle: 0deg;
@@ -190,13 +201,13 @@
         <div class="rightTopaling">
         <a id="prijaviteText">Prijavite se tukaj: </a>
         <button class="gumb" onclick="window.location.href = 'login.html';">Račun</button>
+        <button class="gumb" onclick="window.location.href = 'news.html';" style="background-color: #4694d9;">Novice!</button>
         </div>
     </div>
     <div class="main border">
-    <div class="slikacontainer">
+    <h1 class="hear">Najboljše igrice:</h1>
+    <div class="slikacontainer" id="igremenu">
         <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a class="nameText">Igra</a></div>
-        <div class="slika-wrapper"><img src="rah.jpg" alt="aaa" class="slika" onclick="NaIgra(2)" draggable="false"><a class="nameText">Igra</a></div>
-        <div class="slika-wrapper"><img src="fish.jpg" alt="aaa" class="slika" onclick="NaIgra(3)" draggable="false"><a class="nameText">Igra</a></div>
     </div>
     </div>
     <div class="main" style="background-color: #83d4e4;">
@@ -223,7 +234,7 @@
     }
   });
 
-
     </script>
+        <script src="getgemes.js"></script>
 </body>
 </html>
