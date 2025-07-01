@@ -1,14 +1,13 @@
-function parsejsonshyt(link){
-    const slika = fetch("https://samotovesi.si/igre/" + link + "/slika.png")
-    const json = fetch("https://samotovesi.si/igre/" + link + "/info.json")
-      .then(response => {
-if (!response.ok) throw new Error("Failed to load games.json");return response.json();})
-.then(data => {
-    const ime = data.ime
-    return (slika, ime);
-})
-
+async function parsejsonshyt(link) {
+    console.log(link);
+    const slika = await fetch("https://samotovesi.si/igre/" + link + "/slika.png");
+    const jsone = await fetch("https://samotovesi.si/igre/" + link + "/info.json");
+    if (!jsonResponse.ok) throw new Error("Napaka pri branju info.json");
+    const data = await jsone.json();
+    const ime = data.ime;
+    return [slika, ime];
 }
+
 const gmenu = document.getElementById("igremenu");
 fetch("https://samotovesi.si/igre/games.json")
       .then(response => {
@@ -32,12 +31,18 @@ if (!response.ok) throw new Error("Failed to load games.json");return response.j
     tempGame.appendChild(img);
     tempGame.appendChild(text);
     games.forEach(game => {
-        var retern = parsejsonshyt(game);
-        img.src = retern[0];
+      console.log(game);
+        //var retern = parsejsonshyt(game);
+        img.src = "https://samotovesi.si/igre/" + game + "/slika.png"
         img.onclick = function () {
         NaIgra(game);
         };
-      text.textContent = retern[1];
+        console.log("https://samotovesi.si/igre/" + game + "/info.json");
+        var jsone = fetch("https://samotovesi.si/igre/" + game + "/info.json");
+        //if (!jsonResponse.ok) throw new Error("Napaka pri branju info.json");
+          const Jsonedata = JSON.parse(jsone);
+          const Jsoneime = Jsonedata.ime;
+      text.textContent = Jsoneime
       gmenu.appendChild(tempGame);
     });
 
