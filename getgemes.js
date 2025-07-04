@@ -25,6 +25,7 @@ if (!response.ok) throw new Error("Failed to load games.json");return response.j
     img.draggable = false;
     const text = document.createElement("a");
     text.textContent = "Igra";
+    text.className = "nameText";
     //img.onclick = function () {
     //    NaIgra();
     //};
@@ -37,13 +38,21 @@ if (!response.ok) throw new Error("Failed to load games.json");return response.j
         img.onclick = function () {
         NaIgra(game);
         };
-        console.log("https://samotovesi.si/igre/" + game + "/info.json");
-        var jsone = fetch("https://samotovesi.si/igre/" + game + "/info.json");
-        //if (!jsonResponse.ok) throw new Error("Napaka pri branju info.json");
-          const Jsonedata = JSON.parse(jsone);
-          const Jsoneime = Jsonedata.ime;
-      text.textContent = Jsoneime
-      gmenu.appendChild(tempGame);
+        //console.log("https://samotovesi.si/igre/" + game + "/info.json");
+        //console.log(fetch("https://samotovesi.si/igre/" + game + "/info.json"));
+        //var jsone = 
+fetch("https://samotovesi.si/igre/" + game + "/info.json").then(response => {
+    if (!response.ok) {throw new Error("Napaka pri pridobivanju datoteke");}return response.json();}).then(jsone => {
+    console.log("JSON objekt:", jsone);
+
+    // Zdaj lahko dostopaš do jsone.ime
+    const Jsoneime = jsone.ime;
+    text.textContent = Jsoneime;
+    gmenu.appendChild(tempGame);
+  })
+//  .then(data => {console.log("Uspešno prebrano:", data);})
+            .catch(error => {console.error("Napaka:", error);});
+
     });
 
 })
