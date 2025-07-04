@@ -1,4 +1,5 @@
-
+import { THREE, CSS2DRenderer, CSS2DObject, confetti } from './dependency.js';
+import * as ssiutils from '../utils.js';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const color = 0xFFFFFF;
@@ -440,7 +441,7 @@ function onKeyDown( event ) {
       console.log(pressedKeys);
     }
     if ((event.key == "g" || event.key == "G") && Died){
-      location.reload();
+      ssiutils.reload();
       //restartVars();
       //Died = false;
       //TheseRedKosi = [];
