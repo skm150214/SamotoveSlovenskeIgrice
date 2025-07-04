@@ -1,8 +1,3 @@
-import * as THREE from 'https://esm.sh/three@0.160.1';
-//import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
-//import { debug, max } from 'three/tsl';
-import { CSS2DRenderer, CSS2DObject } from 'https://esm.sh/three@0.160.1/examples/jsm/renderers/CSS2DRenderer.js';
-import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
