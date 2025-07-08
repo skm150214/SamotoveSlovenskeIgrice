@@ -6,103 +6,7 @@
 	<script src="./logo.js" defer></script>
 	<script src="https://accounts.google.com/gsi/client" async defer></script>
 	<script>
-	//function handleCredentialResponse(response) {
-	  // This is a JWT (ID token)
-	  //console.log("Encoded JWT ID token: " + response.credential);
-	  // Decode it (optional) or send it to your server for verification
-	//}
-
-	//window.onload = function () {
-	//  google.accounts.id.initialize({
-	//    client_id: "449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com",
-	//    callback: handleCredentialResponse
-	//  });
-
-	//  google.accounts.id.renderButton(
-	//    document.getElementById("g_id_signin"),
-	//    { theme: "outline", size: "large" }
-	//  );
-
-	//  google.accounts.id.prompt(); // optional — shows One Tap prompt
-	//};
-/*function changeTheData(name,pict){
-  document.getElementById("imeid").textContent = name;
-  document.getElementById("pfpid").src = pict;
-}
-/*		function handleCredentialResponse(response) {
-			const data = parseJwt(response.credential); // Razšifriraj Google token
-		console.log("Logged in as:", data.name);
-
-		// Shrani Google podatke v localStorage
-		//localStorage.setItem("user", JSON.stringify(data));
-		// (!localStorage.getItem("name")) {
-		//  localStorage.setItem("name", data.name);
-		//}
-
-		
-		// Posodobi UI
-		changeTheData(localStorage.getItem("name"), data.picture);
-		document.getElementById("helperDiv").style.display = 'inline-block';
-		document.getElementById('logoutBtn').style.display = 'inline-block';
-		document.getElementById("nameParamLabel").style.display = 'block';
-		document.getElementById("nameParam").style.display = 'block';
-		document.getElementById("nameParam").value = localStorage.getItem("name");
-		document.getElementById("nameParamButton").style.display = 'inline-block';
-
-		const loginBtn = document.querySelector('.g_id_signin');
-		if (loginBtn) loginBtn.style.display = 'none';
-		}*/
-/*
-function parseJwt(token) {
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(
-	atob(base64).split('').map(function (c) {
-	  return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-	}).join('')
-  );
-  return JSON.parse(jsonPayload);
-}
-
-// When page loads
-document.addEventListener("DOMContentLoaded", () => {
-  // Check if user is already stored
-  const user = JSON.parse(localStorage.getItem("user"));
-	if(localStorage.getItem("name") == null){
-		localStorage.setItem("name", user.name);
-	}//else{document.getElementById("nameParam").value = user.name;}
-	document.getElementById("imeid").textContent = localStorage.getItem("name");
-  if (user) {
-	// Restore login UI state
-	document.getElementById('logoutBtn').style.display = 'inline-block';
-	const loginBtn = document.querySelector('.g_id_signin');
-	if (loginBtn) loginBtn.style.display = 'none';
-
-	// Optional: show greeting
-	//const userInfo = document.getElementById('userInfo');
-	//if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
-	changeTheData(user.name,user.picture);
-	document.getElementById("helperDiv").style.display = 'inline-block';
-	document.getElementById("nameParamLabel").style.display = 'block';
-	document.getElementById("nameParam").style.display = 'block';
-	document.getElementById("nameParam").value = localStorage.getItem("name");
-	document.getElementById("nameParamButton").style.display = 'inline-block';
-	document.getElementById("helperDiv").style.display = 'inline-block';
-  //const coolAuthCard = document.createElement('div');
-  //coolAuthCard.classList.add('card');
-  //coolAuthCard.style.backgroundColor = '#3de7e1';
-  //coolAuthCard.id = 'coolAuthCardID';
-  //document.getElementById("helperDiv").appendChild(coolAuthCard);
-  }
-
-  // Setup logout
-  const logoutBtn = document.getElementById('logoutBtn');
-  logoutBtn.addEventListener("click", () => {
-	localStorage.removeItem("user"); // clear saved user
-	google.accounts.id.disableAutoSelect(); // prevent auto re-login
-	location.reload(); // refresh to reset UI
-  });
-}); */
+data = null; // Global variable to store user data
 function handleCredentialResponse(response) {
     const data = parseJwt(response.credential); // Razšifriraj Google token
   console.log("Logged in as:", data.name);
@@ -194,29 +98,13 @@ function dodatNameThing() {
 	}
 
 }
-function authAntonukmarec(){
-	alert("ta gumb ševedno ni narejen :(");
-	//const user = JSON.parse(localStorage.getItem("user"));
-	//let mainrun1 = user.name
-	//.toLowerCase()
-	//.replace(/č/g, 'c')
-	//.replace(/š/g, 's')
-	//.replace(/ž/g, 'z')
-	//.split(/\s+/)
-	//.slice(0, 2)
-	//.join(".");
-	//let finalRun = mainrun1 + "@antonukmar.si";
-
-}
-//function changeCustName(){
-//	localStorage.setItem("name", document.getElementById("nameParam").value);
-//	document.getElementById("imeid").textContent = document.getElementById("nameParam").value;
-//}
-function logout() {
-	localStorage.removeItem("user"); // clear saved user
-	//google.accounts.id.disableAutoSelect(); // prevent auto re-login
-	location.reload();
-}	
+// When page loads
+document.addEventListener("DOMContentLoaded", () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    }
+});
 </script>
 	<style>
 		@property --gradient-angle {
@@ -378,26 +266,8 @@ function logout() {
 			}
 			100% {
 				--gradient-angle: 360deg;
-			} /*			<label id="nameParamLabel" style="display: none;">Spremenite Svoje Ime:</label>
-			<input class="input"type="text" id="nameParam" style="display: none;"></input>
-			<button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton" onclick="changeCustName()">Spremeni Ime!</button>*/
-		}/*<div id="g_id_onload"
-					data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
-					data-context="signin"
-					data-ux_mode="popup"
-					data-callback="handleCredentialResponse"
-					data-auto_select="true"
-					data-itp_support="true">
-				</div>
-
-				<div class="g_id_signin"
-					data-type="standard"
-					data-shape="rectangular"
-					data-theme="outline"
-					data-text="sign_in_with"
-					data-size="large"
-					data-logo_alignment="left"><button class="gumb" style="display: flex;flex-direction: column;justify-content: center;"onclick="window.location.href = 'logintrue.html';">Login</button>
-				</div>*/
+			}
+		}
 	</style>
 
 </head>
@@ -411,10 +281,9 @@ function logout() {
 
 	</div>
 	<div class="cardCont">
-		<div class="card" style="display: flex;flex-direction: column;justify-content: center;">
-			<label>lalala</label>
-			
-			<div id="g_id_onload"
+		<div class="card">
+			<label>Prijavite se via Google:</label>
+				<div id="g_id_onload"
 					data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
 					data-context="signin"
 					data-ux_mode="popup"
@@ -431,23 +300,12 @@ function logout() {
 					data-size="large"
 					data-logo_alignment="left">
 				</div>
-			<button id="logoutBtn"class="gumb" style="display:none;" onclick="logout()">Logout</button>
-			<div id="bouttalogindiv" style="display: none;">
+                <div id="bouttalogindiv" style="display: none;">
 			        <label id="nameParamLabel" >Naredite si ime:</label>
 			        <input class="input"type="text" id="nameParam" maxlength="30"></input>
 			        <button class="gumb" style="background-color: #b04aea;" id="nameParamButton" onclick="dodatNameThing()">Izberite si ime!</button>
-		    </div>
-		</div>
-		<div class="card" style="background-color: #9eb77b;  ">
-			<img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
-			<label class="fortnitetextlol" id="imeid">IME</label>
-		</div>
-		<a style="color:#b4b4b4;">(id)</a>
-		<div id="helperDiv" style="display: none;">
-			<div class="card" id="coolAuthCardId" style="background-color:#3de7e1;">
-				<button class="gumb wip" id="antonukmarecAuthButton"  style="background-color:#1a85f0;" onclick="authAntonukmarec();">Auth šole Antona Ukmarja</button>
-			</div>
-		</div>
-	</div>
-</body>
+		        </div>
+            </div>
+	    </div>
+    </body>
 </html>

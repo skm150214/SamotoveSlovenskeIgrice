@@ -3,34 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Samotove Novice AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
-	<script>
-		function doImgThingy(a) {
-			const divselecthelper = document.getElementById("slieke");
-			const selectedimg = divselecthelper.children[a];
-			const slika = document.getElementById("taslika");
-			slika.src = selectedimg.src;
-			const bigimgdiv = document.getElementById("bigimgdiv");
-			/*const bigslikica = document.createElement("img");
-			bigslikica.src = selectedimg.src;
-			bigimgdiv.innerHTML = "";
-			bigimgdiv.appendChild(bigslikica);
-			bigslikica.classList.add("bigslika");*/
-			console.log("naredili stvar");
-			bigimgdiv.style.display = "flex";
-		};
-		function hide(){
-			const bigimgdiv = document.getElementById("bigimgdiv");
-			bigimgdiv.style.display = "none";
-		}
 
-
-
-
-
-
-
-
-	</script>
 	<script src="./logo.js" defer></script>
 	<style>
 		@property --gradient-angle {
@@ -40,7 +13,7 @@
 		}
 		@font-face {
 			font-family: "ComicSansBold";
-			src: url("../../fonts/comicsans.ttf") format("truetype");
+			src: url("fonts/comicsans.ttf") format("truetype");
 			font-weight: bold;
 		}
 			* {
@@ -112,14 +85,6 @@
 			text-align: left;
 			font-family: sans-serif;
 		}
-		.login{
-			align-items: center;
-			margin-top: 5vh;
-			background-color: #333;
-			text-align: center;
-			font-family: "ComicSansCustom", cursive;
-			color: white;
-		}
 		.cardCont {
 			display: flex;
             flex-direction: column;
@@ -141,13 +106,14 @@
 			font-family: "ComicSansCustom", cursive;
 			color: black;
             min-height: 75vh;
-            min-width: calc(100% - 10vh);
+            min-width: 80%;
             max-width: calc(100% - 10vh);
 			outline: black solid 0.75vh;
             /*background: linear-gradient(from -37deg, black, #2e2c2c);*/
 			/*align-items: center;*/
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+			/*padding-left: 20vh;*/
 		}
 		.cardImg{
 			width: 160px;
@@ -193,9 +159,8 @@
             color: black;
             border: 0;
             height: 2px;
-            background: #333;
-            background-image: linear-gradient(to right, #3e6eb3, #bec5c9, #3e6eb3);
-
+            /*background: #333;*/
+    		background-image: linear-gradient(to right, #3e6eb3 , #353839,#181919,#353839, #3e6eb3 );
         }
         .tatxtcont {
             text-align: left;
@@ -241,28 +206,81 @@
             animation: rotation 4.5s cubic-bezier(0.21, 0.56, 0.5, 1) infinite;
         }
 		.bigimgclass{
-			  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
 		}
-		.xtgumb{
-			margin: 2.5vh auto;
-			width: 5vh;
-			height: 5vh;
-			border-radius: 100%;
-			text-align: center;
-			color: white;
-			background-color: rgba(0, 0, 0, 0);
-			scale: 1.000001;
-			background: conic-gradient(from 23deg, #2a2626, #000000, #2a2626, #808080, #2a2626, #000000, #2a2626, #808080, #2a2626, #000000, #2a2626,  #808080, #2a2626, #000000, #2a2626,  #808080, #2a2626, #000000, #2a2626);
-			transition: all 0.4s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+		.card-left {
+			display: flex;
+			flex-direction: row;
+			justify-content: end;
 		}
-		.xtgumb:hover{
-			scale: 1.5;
-			/*transform: rotate(180deg);*/
+
+		.card-right {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			margin-left: 10px;
 		}
-				@keyframes rotation {
+
+		.hvertical {
+			width: 2px;
+			height: 100%;
+			background-image: linear-gradient(to bottom, #3e6eb3, #353839, #3e6eb3);
+			border: none;
+			margin: 0 10px;
+			display: flex;
+			align-items: end;
+		}
+		.kul{
+			font-family: "ComicSansCustom", cursive;
+			text-align: left;
+			word-break: break-all;
+			overflow-wrap: break-word;
+			white-space: normal;
+			display: block;
+			width: 100%;
+			margin: 0;
+			margin-top: 1vh;
+		}
+		.badgeImg{
+			width : 12vh;
+			height: 12vh;
+			margin-right: 1vh;
+
+		}
+		.badgecont{
+			width: auto;
+			display: flex;
+			flex-direction: row;         /* ohraniš vrstično postavitev */
+			justify-content: flex-start; /* <- to poravna elemente levo! */
+			align-items: center;    
+		}
+		.errImg{
+			width: 12vh;
+			height: 12vh;
+			margin-right: 1vh;
+			border-radius: 2px;
+			animation: rotation 2s infinite linear; 
+			object-position: center center;
+			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.55);
+			background-image: linear-gradient(164deg, wheat, white);
+			margin-left: 1vh;
+			margin-right: 1vh;
+			align-items: center;
+			margin-bottom: 1vh;
+			
+		}
+		.clcolumn {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			max-width: 25vh;
+			flex-wrap: wrap;
+		}
+		@keyframes rotation {
 			0% {
 				--gradient-angle: 0deg;
 			}
@@ -271,7 +289,8 @@
 			}
 		}
 		/*                <img src="fish.jpg" class="cardImg" onclick="doImgThingy(1);"></img>
-                <img src="rah.jpg" class="cardImg" onclick="doImgThingy(2);"></img>*/
+                <img src="rah.jpg" class="cardImg" onclick="doImgThingy(2);"></img> 		        	<p class="kul">status:</p> 						<img src="user/img/owner.png"alt="Badge 1" class="badgeImg">
+						<img src="user/img/frend.png"alt="Badge 1" class="badgeImg">*/
 	</style>
 
 </head>
@@ -280,28 +299,56 @@
 		<div id="logodiv">
 			<h1 id="logo">Samotove Šolske Igrice</h1>
 		</div>
-		<a class="leftA"> Novice</a>
+		<a class="leftA"> Profili</a>
 		<button class="gumb" onclick="window.location.href = 'index.html';"style="margin-left: auto;">Nazaj</button>
 
 	</div>
 	<div class="cardCont">
 		<div class="card">
-        <h1 class="ttl">Novice!!!!!!</h1>
-        <hr class="har"></hr>
-        <a class="tatxtcont">text tuki je ful velik!!!!!!!!!! <br>break</br> tungutngunt sahur<br>break</a>
-        <hr class="har" style="margin-top: auto;margin-bottom: 3vh;"></hr>
-            <div class="imgdiv" id="slieke">
-                <img src="news/0-leslika.jpg" class="cardImg" onclick="doImgThingy(0);"></img>
+                <div class="card-left">
+					<div class="clcolumn" style="display: none;" id="levo">
+						<img src="err.png" class="errImg" alt="napaka"></img>
+						<a>napaka pri dobivanju info!</a>
+					</div>
+					<hr class="har hvertical">
+                </div>
+                <div class="card-right">
+                    <h1 class="ttl" id="imejeje">IME</h1>
+                    <hr class="har">
+                    <p class="kul">značke:</p>
+					<div class="badgecont" id="badgecont">
 
-            </div>
+						</div>
+</div>
+        </div>
+    </div>
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const guid = params.get("p");
+		imel = document.getElementById("imejeje");
+		fetch("https://samotovesi.si/get_user.php", {
+  			method: "POST",headers: { "Content-Type": "application/json" },
+  			body: JSON.stringify({ uid: guid })})
+			.then(res => res.json())
+			.then(data => {
+				imel.innerText = data.name
+				const cont = document.getElementById("badgecont");
+				const img = document.createElement("img");
+				img.className = "badgeImg";
+				console.log(data);
+  				data.badges.forEach(badge => {
+    				img.src = "user/img/" + badge + ".png";
+    				img.alt = badge;
 
-		</div>
-		<div id="bigimgdiv" class="bigimgclass"style="display: none;">
-			<div class="bigimgdivwrap">
-				<img class="bigslika" id="taslika"></img>
-			</div>
-			<button class="xtgumb" onclick="hide();">✖</button>
-		</div>
-	</div>
+    				cont.appendChild(img.cloneNode(true));
+ 				});
+			})
+			.catch(err => {
+				console.error("Napaka pri pridobivanju podatkov:", err);
+				imel.innerText = "Napaka pri pridobivanju podatkov";
+				const levo = document.getElementById("levo");
+				levo.style.display = "flex";
+			});
+	</script>
 </body>
 </html>
