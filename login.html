@@ -4,115 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Samotova Login AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
 	<script src="./logo.js" defer></script>
-	<script src="https://accounts.google.com/gsi/client" async defer></script>
+
 	<script>
-	//function handleCredentialResponse(response) {
-	  // This is a JWT (ID token)
-	  //console.log("Encoded JWT ID token: " + response.credential);
-	  // Decode it (optional) or send it to your server for verification
-	//}
-
-	//window.onload = function () {
-	//  google.accounts.id.initialize({
-	//    client_id: "449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com",
-	//    callback: handleCredentialResponse
-	//  });
-
-	//  google.accounts.id.renderButton(
-	//    document.getElementById("g_id_signin"),
-	//    { theme: "outline", size: "large" }
-	//  );
-
-	//  google.accounts.id.prompt(); // optional — shows One Tap prompt
-	//};
-/*function changeTheData(name,pict){
-  document.getElementById("imeid").textContent = name;
-  document.getElementById("pfpid").src = pict;
-}
-/*		function handleCredentialResponse(response) {
-			const data = parseJwt(response.credential); // Razšifriraj Google token
-		console.log("Logged in as:", data.name);
-
-		// Shrani Google podatke v localStorage
-		//localStorage.setItem("user", JSON.stringify(data));
-		// (!localStorage.getItem("name")) {
-		//  localStorage.setItem("name", data.name);
-		//}
-
-		
-		// Posodobi UI
-		changeTheData(localStorage.getItem("name"), data.picture);
-		document.getElementById("helperDiv").style.display = 'inline-block';
-		document.getElementById('logoutBtn').style.display = 'inline-block';
-		document.getElementById("nameParamLabel").style.display = 'block';
-		document.getElementById("nameParam").style.display = 'block';
-		document.getElementById("nameParam").value = localStorage.getItem("name");
-		document.getElementById("nameParamButton").style.display = 'inline-block';
-
-		const loginBtn = document.querySelector('.g_id_signin');
-		if (loginBtn) loginBtn.style.display = 'none';
-		}*/
-/*
-function parseJwt(token) {
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(
-	atob(base64).split('').map(function (c) {
-	  return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-	}).join('')
-  );
-  return JSON.parse(jsonPayload);
-}
-
-// When page loads
-document.addEventListener("DOMContentLoaded", () => {
-  // Check if user is already stored
-  const user = JSON.parse(localStorage.getItem("user"));
-	if(localStorage.getItem("name") == null){
-		localStorage.setItem("name", user.name);
-	}//else{document.getElementById("nameParam").value = user.name;}
-	document.getElementById("imeid").textContent = localStorage.getItem("name");
-  if (user) {
-	// Restore login UI state
-	document.getElementById('logoutBtn').style.display = 'inline-block';
-	const loginBtn = document.querySelector('.g_id_signin');
-	if (loginBtn) loginBtn.style.display = 'none';
-
-	// Optional: show greeting
-	//const userInfo = document.getElementById('userInfo');
-	//if (userInfo) userInfo.textContent = `Pozdravljen, ${user.name}!`;
-	changeTheData(user.name,user.picture);
-	document.getElementById("helperDiv").style.display = 'inline-block';
-	document.getElementById("nameParamLabel").style.display = 'block';
-	document.getElementById("nameParam").style.display = 'block';
-	document.getElementById("nameParam").value = localStorage.getItem("name");
-	document.getElementById("nameParamButton").style.display = 'inline-block';
-	document.getElementById("helperDiv").style.display = 'inline-block';
-  //const coolAuthCard = document.createElement('div');
-  //coolAuthCard.classList.add('card');
-  //coolAuthCard.style.backgroundColor = '#3de7e1';
-  //coolAuthCard.id = 'coolAuthCardID';
-  //document.getElementById("helperDiv").appendChild(coolAuthCard);
-  }
-
-  // Setup logout
-  const logoutBtn = document.getElementById('logoutBtn');
-  logoutBtn.addEventListener("click", () => {
-	localStorage.removeItem("user"); // clear saved user
-	google.accounts.id.disableAutoSelect(); // prevent auto re-login
-	location.reload(); // refresh to reset UI
-  });
-}); */
+var data = null;
 function handleCredentialResponse(response) {
-    const data = parseJwt(response.credential); // Razšifriraj Google token
+  data = parseJwt(response.credential); // Razšifriraj Google token
   console.log("Logged in as:", data.name);
-    document.getElementById("bouttalogindiv").style.display = "flex";
-	document.getElementById("nameParamLabel").innerText = (data.name).slice(0, 30);
-  // Shrani Google podatke v localStorage
-  
-  // Posodobi UI
-  const loginBtn = document.querySelector('.g_id_signin');
-  if (loginBtn) loginBtn.style.display = 'none';
 }
 
 function parseJwt(token) {
@@ -125,75 +22,7 @@ function parseJwt(token) {
   );
   return JSON.parse(jsonPayload);
 }
-function checkProfanity(text) {
-  const encodedText = encodeURIComponent(text);
-  const url = `https://www.purgomalum.com/service/containsprofanity?text=${encodedText}`;
 
-  try {
-    const response = fetch(url);
-    const result = esponse.text();
-
-    if (result === "true") {
-      return false;
-    } else {
-      return true;
-    }
-  } catch (error) {
-    return -1;
-  }
-}
-function checkIfNameExists(name1){
-
-	fetch("https://samotovesi.si/check_name.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name: name1 })
-})
-.then(res => res.json())
-.then(data => {
-  if (data.exists) {
-    return false;
-  } else {
-    return true;
-  }
-})
-.catch(err => console.error("Napaka:", err));
-}
-function dodatNameThing() {
-  const isallatvalid = true;
-  localStorage.setItem("name", document.getElementById("nameParam").value);
-  if (!checkProfanity(localStorage.getItem("name"))) {
-	alert("Ime vsebuje neprimerne besede. Poskusite z drugim imenom.");
-	isallatvalid = false;
-	return;
-  }
-  if(checkIfNameExists(localStorage.getItem("name"))){
-	alert("To ime že obstaja. Izberite drugo ime.");
-	isallatvalid = false;
-	return;
-  }
-  if(isallatvalid){
-  // Pošlji podatke na strežnik – z `sub` kot unikatni ID
-  fetch('https://samotovesi.si/save_user.php', {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: localStorage.getItem("name"),
-      sub: data.sub,            // 🔐 Ključna stvar: Google ID
-      badges: []                // Začetni badge-i (lahko kasneje nadgradiš)
-    })
-  })
-  .then(res => res.json())
-  .then(result => {
-    console.log("Rezultat prijave:", result);
-    // Npr: shrani uid za uporabo naprej
-    localStorage.setItem("uid", result.uid);
-	window.location.href = "login.html"; // Preusmeri na glavno stran
-  })
-  .catch(err => console.error("Napaka:", err));
-	}
-
-}
 function authAntonukmarec(){
 	alert("ta gumb ševedno ni narejen :(");
 	//const user = JSON.parse(localStorage.getItem("user"));
@@ -212,11 +41,35 @@ function authAntonukmarec(){
 //	localStorage.setItem("name", document.getElementById("nameParam").value);
 //	document.getElementById("imeid").textContent = document.getElementById("nameParam").value;
 //}
-function logout() {
-	localStorage.removeItem("user"); // clear saved user
+//function logout() {
+//	localStorage.removeItem("user"); // clear saved user
 	//google.accounts.id.disableAutoSelect(); // prevent auto re-login
-	location.reload();
-}	
+//	location.reload();
+//}	
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Check if user is already stored
+  const user = JSON.parse(localStorage.getItem("user"));
+	if(localStorage.getItem("name") == null){
+		localStorage.setItem("name", user.name);
+	}//else{document.getElementById("nameParam").value = user.name;}
+	document.getElementById("imeid").textContent = localStorage.getItem("name");
+  if (user) {
+	// Restore login UI state
+	document.getElementById('logoutBtn').style.display = 'inline-block';
+	const loginBtn = document.querySelector('.g_id_signin');
+	if (loginBtn) loginBtn.style.display = 'none';
+
+  }
+  // Setup logout
+  const logoutBtn = document.getElementById('logoutBtn');
+  logoutBtn.addEventListener("click", () => {
+	localStorage.removeItem("user"); // clear saved user
+	google.accounts.id.disableAutoSelect(); // prevent auto re-login
+	location.reload(); // refresh to reset UI
+  });
+});
 </script>
 	<style>
 		@property --gradient-angle {
@@ -396,7 +249,7 @@ function logout() {
 					data-theme="outline"
 					data-text="sign_in_with"
 					data-size="large"
-					data-logo_alignment="left"><button class="gumb" style="display: flex;flex-direction: column;justify-content: center;"onclick="window.location.href = 'logintrue.html';">Login</button>
+					data-logo_alignment="left">
 				</div>*/
 	</style>
 
@@ -413,30 +266,8 @@ function logout() {
 	<div class="cardCont">
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;">
 			<label>lalala</label>
-			
-			<div id="g_id_onload"
-					data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
-					data-context="signin"
-					data-ux_mode="popup"
-					data-callback="handleCredentialResponse"
-					data-auto_select="true"
-					data-itp_support="true">
-				</div>
-
-				<div class="g_id_signin"
-					data-type="standard"
-					data-shape="rectangular"
-					data-theme="outline"
-					data-text="sign_in_with"
-					data-size="large"
-					data-logo_alignment="left">
-				</div>
 			<button id="logoutBtn"class="gumb" style="display:none;" onclick="logout()">Logout</button>
-			<div id="bouttalogindiv" style="display: none;">
-			        <label id="nameParamLabel" >Naredite si ime:</label>
-			        <input class="input"type="text" id="nameParam" maxlength="30"></input>
-			        <button class="gumb" style="background-color: #b04aea;" id="nameParamButton" onclick="dodatNameThing()">Izberite si ime!</button>
-		    </div>
+			<button id="loginBtn"class="gumb" style="display:auto;" onclick="window.location.href = 'regis.html';">Login</button>
 		</div>
 		<div class="card" style="background-color: #9eb77b;  ">
 			<img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>

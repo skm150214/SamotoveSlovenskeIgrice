@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+	<meta charset="UTF-8">
+	<title>Samotova Login AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+	<script src="./logo.js" defer></script>
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
+	<script defer>
+var data = null;
+var isnameallow = false;
+function handleCredentialResponse(response) {
+  data = parseJwt(response.credential); // Razšifriraj Google token
+  console.log("Logged in as:", data.name);
+  nameEeEe = data.name;
+  console.log("Ime:", nameEeEe);
+  console.log(document.getElementById("nameParam").textContent );
+  console.log(nameEeEe.slice(0, Math.min(nameEeEe.length,30)));
+	//document.getElementById("nameParamLabel").innerText = (data.name).slice(0, 30);
+  // Shrani Google podatke v localStorage
+  
+  // Posodobi UI
+  fetch("https://samotovesi.si/exist_check.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ sub: data.sub })
+})
+.then(res => res.json())
+.then(data => {
+  document.getElementById("cardcont").style.pointerEvents = "auto";
+  document.getElementById("loginitems").classList.remove("wip");
+  document.getElementById("regisitems").classList.remove("wip");
+  document.getElementById("logintip").style.display = "none";
+  document.getElementById("registertip").style.display = "none";
+  document.getElementById("hepithingies").style.display = "block";
+  document.getElementById("googlethingies").style.display = "none";
+  if (data.exists) {
+	document.getElementById("register").style.display = "none";
+  } else {
+    console.log("Google račun še NI registriran.");
+	document.getElementById("login").style.display = "none";
+
+	document.getElementById("nameParam").value = nameEeEe.slice(0, Math.min(nameEeEe.length,30));
+	checkName(document.getElementById("nameParam").value);
+  }
+})
+.catch(err => console.error("Napaka:", err));
+
+}
+
+function parseJwt(token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(
+	atob(base64).split('').map(function (c) {
+	  return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	}).join('')
+  );
+  return JSON.parse(jsonPayload);
+}
+function checkName(nam){
+	document.getElementById("warnin").style.display = "none";
+	  fetch("https://samotovesi.si/check_name.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: nam })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exists) {
+      isnameallow = false;
+	  document.getElementById("warnin").style.display = "block";
+    } else {
+      isnameallow = true;
+	  	  document.getElementById("warnin").style.display = "none";
+    }
+  })
+  .catch(err => {
+    console.error("Napaka pri preverjanju imena:", err);
+  });
+
+}
+function dodatNameThing() {
+	checkName(document.getElementById("nameParam").value);
+ if (!isnameallow){
+	console.warn("nepravino ime");
+    return;
+ }
+  // Pošlji podatke na strežnik – z `sub` kot unikatni ID
+  fetch('https://samotovesi.si/save_user.php', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: document.getElementById("nameParam").value,
+      sub: data.sub,            // 🔐 Ključna stvar: Google ID
+      badges: []                // Začetni badge-i (lahko kasneje nadgradiš)
+    })
+  })
+  .then(res => res.json())
+  .then(result => {
+	
+    console.log("Rezultat prijave:", result);
+    // Npr: shrani uid za uporabo naprej
+    localStorage.setItem("uid", result.uid);
+	window.location.href = "login.html"; // Preusmeri na glavno stran
+  })
+  .catch(err => console.error("Napaka:", err));
+	}
+
+
+function authAntonukmarec(){
+	alert("ta gumb ševedno ni narejen :(");
+	//const user = JSON.parse(localStorage.getItem("user"));
+	//let mainrun1 = user.name
+	//.toLowerCase()
+	//.replace(/č/g, 'c')
+	//.replace(/š/g, 's')
+	//.replace(/ž/g, 'z')
+	//.split(/\s+/)
+	//.slice(0, 2)
+	//.join(".");
+	//let finalRun = mainrun1 + "@antonukmar.si";
+
+}
+//function changeCustName(){
+//	localStorage.setItem("name", document.getElementById("nameParam").value);
+//	document.getElementById("imeid").textContent = document.getElementById("nameParam").value;
+//}
+//function logout() {
+//	localStorage.removeItem("user"); // clear saved user
+	//google.accounts.id.disableAutoSelect(); // prevent auto re-login
+//	location.reload();
+//}	
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Check if user is already stored
+  const user = JSON.parse(localStorage.getItem("user"));
+	if(localStorage.getItem("name") == null){
+		localStorage.setItem("name", user.name);
+	}//else{document.getElementById("nameParam").value = user.name;}
+	//document.getElementById("imeid").textContent = localStorage.getItem("name");
+  if (user) {
+	// Restore login UI state
+	document.getElementById('logoutBtn').style.display = 'inline-block';
+	const loginBtn = document.querySelector('.g_id_signin');
+	if (loginBtn) loginBtn.style.display = 'none';
+
+  }
+  // Setup logout
+  const logoutBtn = document.getElementById('logoutBtn');
+  //logoutBtn.addEventListener("click", () => {
+//	localStorage.removeItem("user"); // clear saved user
+//	google.accounts.id.disableAutoSelect(); // prevent auto re-login
+//	location.reload(); // refresh to reset UI
+//  });
+});
+</script>
+	<style>
+		@property --gradient-angle {
+			syntax: "<angle>";
+			initial-value: 0deg;
+			inherits: false;
+		}
+		@font-face {
+			font-family: "ComicSansBold";
+			src: url("../../fonts/comicsans.ttf") format("truetype");
+			font-weight: bold;
+		}
+			* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+
+		html {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		body {
+			background-color: lightslategray;
+			background-size: 100% 100%;
+			background-attachment: fixed;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.zgori {
+			display:flex;
+			justify-content:start;
+			align-items: center;
+			background-color: #333333;
+			padding: 10px 20px;
+			font-family: "ComicSansCustom", cursive;
+			color: white;
+		}
+		.gumb{
+
+			align-items: center;
+			background-color: #4caf50;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			cursor: pointer;
+			border-radius: 8px;
+			font-family: "ComicSansCustom", cursive;
+			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+		}
+		.gumb:hover{
+			scale: 1.1;
+			background-color: #2cad4e;
+		}
+		.input{
+			cursor: pointer;
+			border-radius: 8px;
+			font-family: "ComicSansCustom", cursive;
+			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			padding: 15px 32px;
+			margin-left: auto;
+			align-items: right;
+			background-color: #376d94;
+			border: none;
+			margin: 2vh;
+			outline: black solid 0.5vh;
+		}
+		.leftA{
+			text-align: left;
+			font-family: sans-serif;
+		}
+		.login{
+			align-items: center;
+			margin-top: 5vh;
+			background-color: #333;
+			text-align: center;
+			font-family: "ComicSansCustom", cursive;
+			color: white;
+		}
+		.cardCont {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			height: calc(100% - 70px); /* adjust if navbar height changes */
+			padding: 20px;
+			margin-top: 1vh;
+			align-items: flex-start;
+		}
+
+			
+		.card {
+			background-color: #333; /* same as navbar */
+			padding: 40px 30px;
+			margin: 2vh;
+			margin-top: 0vh;
+			border-radius: 16px;
+			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
+			width: 100%;
+			text-align: center;
+			font-family: "ComicSansCustom", cursive;
+			color: white;
+			outline: beige solid 5px;
+			align-items: center;
+			  transition: margin 0.5s, transform 0.5s;
+
+		}
+		.cardImg{
+			width: 120px;
+			height: 120px;
+			border-radius: 16px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+			animation: rotation 2s infinite linear; 
+			overflow: hidden;      
+			position: relative;
+			object-fit: cover;
+			object-position: center center;
+			outline: black solid 2px;
+			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.55);
+
+		}
+		.fortnitetextlol{
+			display: inline-block;
+			transform: rotate(-23deg) translateY(0.275vh);
+			scale: 1.5;
+			color:black;
+		}
+		.wip{
+			filter: grayscale(100%);
+		}
+		.signindiv{
+			width: 20%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin: 2vh;
+		}
+		.everythingints{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.btnmrgin{
+			margin: 1vh;
+		}
+		.regis{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.arrowimg{
+			width: 20vh;
+			height: auto;
+			transform: translateY(1.25vh);
+		}
+		.arrleft{
+			transform: scaleX(-1) translateY(1.25vh);
+		}
+		@keyframes rotation {
+			0% {
+				--gradient-angle: 0deg;
+			}
+			100% {
+				--gradient-angle: 360deg;
+			} /*			<label id="nameParamLabel" style="display: none;">Spremenite Svoje Ime:</label>
+			<input class="input"type="text" id="nameParam" style="display: none;"></input>
+			<button class="gumb" style="background-color: #b04aea; display: none;" id="nameParamButton" onclick="changeCustName()">Spremeni Ime!</button>*/
+		}/*<div id="g_id_onload"
+					data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
+					data-context="signin"
+					data-ux_mode="popup"
+					data-callback="handleCredentialResponse"
+					data-auto_select="true"
+					data-itp_support="true">
+				</div>
+
+				<div class="g_id_signin"
+					data-type="standard"
+					data-shape="rectangular"
+					data-theme="outline"
+					data-text="sign_in_with"
+					data-size="large"
+					data-logo_alignment="left">
+				</div><a style="color:#c84242ff;font-style: italic;margin-top: 1vh;">gumbi so skriti!</a>		nad param		<label id="nameParamLabel" >Naredite si ime:</label>*/
+	</style>
+
+</head>
+<body>
+	<div class="zgori">
+		<div id="logodiv">
+			<h1 id="logo">Samotove Šolske Igrice</h1>
+		</div>
+		<a class="leftA"> Login</a>
+		<button class="gumb" onclick="window.location.href = 'index.html';"style="margin-left: auto;">Nazaj</button>
+
+	</div>
+	<div class="everythingints">
+	<div class="signindiv">
+		<img src="arrow.png" alt="puščica tuki" class="arrowimg"></img>
+		<div id="googlethingies">
+			<div id="g_id_onload"
+				data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
+				data-context="signin"
+				data-ux_mode="popup"
+				data-callback="handleCredentialResponse"
+				data-auto_select="true"
+				data-itp_support="true">
+			</div>
+
+			<div class="g_id_signin"
+				data-type="standard"
+				data-shape="rectangular"
+				data-theme="outline"
+				data-text="sign_in_with"
+				data-size="large"
+				data-logo_alignment="left">
+			</div>
+		</div>
+		<div id="hepithingies" style="display: none;">
+			<a> Hvala za se prijaviti!</a>
+		</div>
+		<img src="arrow.png" alt="puščica tuki" class="arrowimg arrleft"></img>
+	</div>
+	<div class="cardCont" id="cardcont">
+		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="login">
+			<label>Prijavite se!</label>
+			<button id="loginitems" class="gumb wip btnmrgin">Prijava</button>
+			<a id="logintip" style="color: #5fdba7">Prijavite se z tistim google gumbom zgoraj!</a>
+		</div>
+		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="register">
+			<label>Registrirajte se!</label>
+			<div id="regisitems" class="regis wip" >
+				<a style="color:#cce27c;font-style: italic;margin-bottom: 2vh;">dajte si ime v tisto pod mano!</a>	
+			    <input class="input" type="text" id="nameParam" maxlength="30"></input>
+				<a style="color:#c11818;margin-bottom: 2vh;display: none;" id="warnin">tole ime je že uporabljeno!</a>
+			    <button class="gumb" style="background-color: #b04aea;" id="nameParamButton" onclick="dodatNameThing()">Izberite si ime!</button>
+			</div>
+			<div id="registext">
+				
+				<a id="registertip" style="color: #5fdba7;margin-top: 4vh;">Začnite registracijo z tistim google gumbom zgoraj!</a>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script>
+		const cont =   document.getElementById("cardcont");
+		cont.style.pointerEvents = "none"; // Onemogoči vsebino dokler se ne preveri prijava
+		console.log(cont.style.pointerEvents);
+		</script>
+</body>
+</html>
