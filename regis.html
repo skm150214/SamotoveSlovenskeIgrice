@@ -97,11 +97,13 @@ function dodatNameThing() {
   })
   .then(res => res.json())
   .then(result => {
-	
+	if (result.success != "exists") {
+
+
     console.log("Rezultat prijave:", result);
     // Npr: shrani uid za uporabo naprej
     localStorage.setItem("uid", result.uid);
-	window.location.href = "login.html"; // Preusmeri na glavno stran
+	window.location.href = "login.html"; 	}// Preusmeri na glavno stran
   })
   .catch(err => console.error("Napaka:", err));
 	}
@@ -153,7 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //	google.accounts.id.disableAutoSelect(); // prevent auto re-login
 //	location.reload(); // refresh to reset UI
 //  });
+document.getElementById("nameParam").addEventListener("blur", function() {
+    console.log("Uporabnik je končal z vnosom.");
+    checkName(document.getElementById("nameParam").value);
+  });
+
 });
+
 </script>
 	<style>
 		@property --gradient-angle {

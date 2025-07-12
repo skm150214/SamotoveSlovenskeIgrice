@@ -72,16 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 	<style>
-		@property --gradient-angle {
-			syntax: "<angle>";
-			initial-value: 0deg;
-			inherits: false;
-		}
 		@font-face {
 			font-family: "ComicSansBold";
 			src: url("../../fonts/comicsans.ttf") format("truetype");
 			font-weight: bold;
 		}
+		@property --gradient-angle {
+			syntax: "<angle>";
+			initial-value: 0deg;
+			inherits: false;
+		}
+
 			* {
 	  margin: 0;
 	  padding: 0;
@@ -267,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;">
 			<label>lalala</label>
 			<button id="logoutBtn"class="gumb" style="display:none;" onclick="logout()">Logout</button>
-			<button id="loginBtn"class="gumb" style="display:auto;" onclick="window.location.href = 'regis.html';">Login</button>
+			<button id="loginBtn"class="gumb" style="display:block;" onclick="window.location.href = 'regis.html';">Login</button>
 		</div>
 		<div class="card" style="background-color: #9eb77b;  ">
 			<img src="rah.jpg" class="cardImg" alt="slika lol"id="pfpid"></img>
