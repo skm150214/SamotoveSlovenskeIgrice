@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>Samotova AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+    <style>
+        @property --gradient-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+        @font-face {
+            font-family: "ComicSansBold";
+            src: url("https://samotovesi.si/fonts/comicsans.ttf") format("truetype");
+            font-weight: bold;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #55ce83;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .main{
+            /*background: /*repeating-linear-gradient(to right,yellow 10%, blue 20%);linear-gradient(to right,  #408000 0vh,#408000 1vh,  #0c2610 1vh, #0c2610 2vh);*/
+            background-color: #408000;
+            /*background-size: 100% 100%;*/
+            /*background-repeat: repeat;
+background-size: 2vh 100%;*/
+              display: flex;
+  flex-direction: column;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            width: 100%;
+                  height: 125vh;
+        }
+        .zgori {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            font-family: "ComicSansCustom", cursive;
+            color: white;
+        }
+        .rightTopaling{
+            margin-left: auto;
+        }
+        .gumb{
+            
+            align-items: right;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: "ComicSansCustom", cursive;
+            transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+            margin-right: 1.5vh;
+        }
+        .gumb:hover{
+            scale: 1.1;
+            background-color: #2cad4e;
+        }
+
+        .slikacontainer {
+            display: flex;
+            margin-top: 1vh;
+            flex-direction: row;
+
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 2vh;
+            padding: 0 2vh;
+            /*background-color: cadetblue; */
+        }
+
+        .slika-wrapper {
+            position: relative;
+            border-radius: 1vh;
+            width: 17vh;
+            height: 17vh;
+            margin-bottom: 2vh;
+        }
+
+        .slika-wrapper::before,
+        .slika-wrapper::after {
+            content: "";
+            position: absolute;
+            inset: -0.5vh;
+            z-index: 0;
+            background: conic-gradient(from var(--gradient-angle), red, yellow, lime, cyan, blue, magenta, red);
+            border-radius: 1.5vh;
+            animation: rotation 4.5s linear infinite;
+        }
+
+        .slika-wrapper::after {
+            filter: blur(0.5vh);
+        }
+        
+
+
+
+
+
+
+
+        .slika-wrapper2 {
+            position: relative;
+            border-radius: 1vh;
+            width: 17vh;
+            height: 17vh;
+            margin-bottom: 2vh;
+            outline: beige  solid 5px;
+        }
+
+        .slika-wrapper2::before,
+        .slika-wrapper2::after {
+            content: "";
+            position: absolute;
+            inset: calc(-0.5vh - 5px);
+            z-index: 0;
+            background: conic-gradient(from var(--gradient-angle), #eade36, #ffffff, #eade36, #ffffff, #26cee8, #000000,#26cee8, #000000);
+            border-radius: 1.5vh;
+            animation: rotation 4.5s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+        }
+
+        .slika-wrapper2::after {
+            filter: blur(0.5vh);
+        }
+
+        .slika {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1vh;
+            z-index: 1;
+            display: block;
+            cursor: pointer;
+            margin-bottom: 0.75vh;
+        }
+        .nameText{
+            font-family: "ComicSansCustom", cursive;
+            margin-top: 1vh;
+            color: #c0b5d3;
+            font-weight: bold;
+            font-size: 2.75vh;
+            -webkit-text-stroke: black 0.2vh;
+            
+        }
+        .border{
+            /*border-color: crimson;        
+                        border-style: dotted;         <div class="slika-wrapper"><img src="obama.jpg" alt="aaa" class="slika" onclick="NaIgra('skm150214.igera_1')" draggable="false"><a class="nameText">Igra</a></div>*/
+            border-bottom:  #6fe66d solid 2vh;
+            border-bottom-style:groove;
+
+        }
+        .hear{
+            display: flex;
+            margin-top: 1vh;
+            flex-direction: row;
+            font-family: "ComicSansCustom", cursive;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 2vh;
+            padding: 0 2vh;
+        }
+        .center{
+            display: flex;
+            align-items: center;
+                        font-family: "ComicSansCustom", cursive;
+        }
+        .canvas{
+            margin: 5vh;
+      /* 20 piksli × 1vh = 20vh dimenzije */
+      width: 60vh;
+      height: 60vh;
+      /* da se dejanska velikost ujema s prikazano */
+      image-rendering: pixelated;
+      /*image-rendering: crisp-edges;*/
+      outline: black solid 0.5vh;
+      border-radius: 1vh;
+        }
+        .minicanvas{
+            margin: 5vh;
+            margin-bottom: 1vh;
+      /* 20 piksli × 1vh = 20vh dimenzije */
+      width: 30vh;
+      height: 30vh;
+      /* da se dejanska velikost ujema s prikazano */
+      image-rendering: pixelated;
+      /*image-rendering: crisp-edges;*/
+      outline: black solid 0.5vh;
+      border-radius: 0.5vh;
+        }
+        .candiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+        .arrowbtn{
+            width: 5vh;
+            height: 5vh;
+            border-radius: 100%;
+            border: solid 0.5vh black;
+            font-size: 2vh;
+            font-style: bold;
+            transition: all 0.2s ease-in-out;
+            scale: 1.0000005;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+           /*margin: 0.25vh;*/
+
+        }
+        .arrowbtn:hover{
+            background-color: whitesmoke;
+            scale: 1.25;
+
+        }
+        .arrowbtn:active{
+            background-color:wheat;
+            scale: 1.1;
+        }
+        .selectbtn{
+            width: 3vh;
+            height: 3vh;
+            border-radius: 100%;
+            border: solid 0.5vh black;
+            font-size: 2vh;
+            font-style: bold;
+            transition: all 0.1s ease-out;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin: 0.25vh;
+
+        }
+        .selectbtn:hover{
+            scale: 1.25;
+
+        }
+        .selectbtn:active{
+            scale: 1.1;
+            filter: grayscale(0.2);
+        }
+        .btngrid {
+            display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(3, 1fr);
+        }
+        .empty {
+            display: none;
+        }
+        .gradienttext {
+            background: linear-gradient(90deg, red, orange, blue);
+  color: transparent;
+
+  /* Chrome, Safari */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Firefox workaround */
+  mask-image: linear-gradient(90deg, red, orange, blue);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(90deg, red, orange, blue);
+  -webkit-mask-composite: source-in;
+            -webkit-text-stroke: black 0.25vh;
+        }
+        .galerijacont {
+            display: flex;
+
+        }
+        .slk{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "ComicSansCustom", cursive;
+        }
+        .selectbtnrow{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5vh;
+        }
+        @keyframes rotation {
+            0% {
+                --gradient-angle: 0deg;
+            }
+            100% {
+                --gradient-angle: 360deg;
+            }
+        }
+        /*.btngrid div {
+
+        }*/
+    </style>
+    <script src="idx.js"></script>
+
+</head>
+<body>
+    <div class="zgori">
+        <div id="logodiv">
+			<h1 id="logo">Samotove Šolske Igrice</h1>
+		</div>
+        <div class="rightTopaling">
+        </div>
+    </div>
+    <div class="main border center">
+        <h1>o, whopsiisitethe!</h1>
+        <h1 style="margin-top: 10vh;" class="gradienttext">Zgleda kot da ste prisli na 404!</h1>
+        <a>(tole pomeni, da tole ki ste hoteli gledati ni obstajalo/ni bilo možno najti!)</a>
+        <div class="candiv">
+    <canvas id="kulikenves" class="canvas" width="19" height="19"></canvas>
+    <div class="btngrid">
+        <div></div>
+        <button id="up" class="arrowbtn" style="transform: rotate(270deg);" onclick="moveUp()">➜</button>
+        <div></div>
+        <button id="left" class="arrowbtn" style="transform: rotate(180deg);" onclick="moveLeft()">➜</button>
+        <div></div>
+        <button id="right" class="arrowbtn" onclick="moveRight()">➜</button>
+        <div></div>
+        <button id="down" class="arrowbtn" style="transform: rotate(90deg);" onclick="moveDown()">➜</button>
+
+    </div>
+</div>
+        </div>
+            <div class="main center" style="background-color: #26cee8;">
+        <h1>Galerija!</h1>
+        <div class="galerijacont">
+            <div class="slk">
+                <canvas id="kulikenves2" class="minicanvas" width="20" height="20"></canvas>
+                <a> mavrično!</a>
+            </div>
+            <div class="slk">
+                <canvas id="kulikenves3" class="minicanvas" width="20" height="20"></canvas>
+                <a> črnobelo!</a>
+            </div>
+            <div class="slk" id="hehe4se">
+                <canvas id="kulikenves4" class="minicanvas" width="20" height="20"></canvas>
+                <div class="selectbtnrow" id="selectbtnrow">
+                    <button class="selectbtn" style="background-color: #ff0000;" onclick="dofunnycolorselect(1,0,0)"></button>
+                    <button class="selectbtn" style="background-color: #00ff00;" onclick="dofunnycolorselect(0,1,0)"></button>
+                    <button class="selectbtn" style="background-color: #ffff00;" onclick="dofunnycolorselect(1,1,0)"></button>
+                    <button class="selectbtn" style="background-color: #0000ff;" onclick="dofunnycolorselect(0,0,1)"></button>
+                    <button class="selectbtn" style="background-color: #ff00ff;" onclick="dofunnycolorselect(1,0,1)"></button>
+                    <button class="selectbtn" style="background-color: #00ffff;" onclick="dofunnycolorselect(0,1,1)"></button>
+                    <button class="selectbtn" style="background-color: #ffffff;" onclick="dofunnycolorselect(1,1,1)"></button>
+                </div>
+                <a id="selectbtnrowtext"> črnobelo!</a>
+            </div>
+        </div>
+        <h1 style="margin-top: 10vh;"id="zmagagalerijatext">Zmagajte ta labirint za več v galeriji!</h1>
+        <div class="galerijacont" id="zmagagalerija" style="display: none;">
+            <div class="slk">
+                <canvas id="kulikenves5" class="minicanvas" width="20" height="20"></canvas>
+                <a> mavrično!</a>
+            </div>
+            <div class="slk">
+                <canvas id="kulikenves6" class="minicanvas" width="20" height="20"></canvas>
+                <a> črnobelo!</a>
+            </div>
+            <div class="slk">
+                <canvas id="kulikenves7" class="minicanvas" width="20" height="20"></canvas>
+                <div class="selectbtnrow" id="selectbtnrow">
+                    <button class="selectbtn" style="background-color: #ff0000;" onclick="dofunnycolorselect(1,0,0)"></button>
+                </div>
+                <a id="selectbtnrowtext"> črnobelo!</a>
+            </div>
+        </div>
+      <script>
+    const canvas = document.getElementById("kulikenves");
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const canvas2 = document.getElementById("kulikenves2");
+    const ctx2 = canvas2.getContext('2d');
+    const canvas3 = document.getElementById("kulikenves3");
+    const ctx3 = canvas3.getContext('2d');
+    const canvas4 = document.getElementById("kulikenves4");
+    const ctx4 = canvas4.getContext('2d');
+for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        ctx2.fillStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        ctx2.fillRect(x, y, 1, 1);
+      }
+    }
+for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        ctx3.fillStyle = "rgb("+ (x*12) + "," + (x*12) + "," + (x*12) + ")";
+        ctx3.fillRect(x, y, 1, 1);
+      }
+    }
+for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        ctx4.fillStyle = "rgb("+ (x*12) + "," + (x*12) + "," + "255" + ")";
+        ctx4.fillRect(x, y, 1, 1);
+      }
+    }
+    const canvas6 = document.getElementById("kulikenves6");
+    const ctx6 = canvas6.getContext('2d');
+    var ctx6rot = 0;
+    function rotatefunnywincanvas() {
+    const size = 20;
+const rad = ctx6rot * Math.PI / 180; // pretvori v radiane
+
+const center = (size - 1) / 2; // središče rotacije
+//ctx6.fillStyle = "black";
+//ctx6.fillRect(0, 0, size, size);
+for (let y = 0; y < size; y++) {
+  for (let x = 0; x < size; x++) {
+    const color = "rgb(" + x * 12 + "," + y * 12 + ", 100)";
+
+    // Premakni koordinato v izhodišče središča
+    const dx = x - center;
+    const dy = y - center;
+
+    // Uporabi rotacijsko matriko
+    const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
+    const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
+//ctx6.fillStyle = "black";
+//    ctx6.fillRect(rx-center, ry-center, 1, 1);
+    // Premakni nazaj v izvorno koordinatno mrežo
+    const fx = Math.round(rx + center);
+    const fy = Math.round(ry + center);
+
+    // Preveri, da je znotraj platna
+    //      ctx6.fillStyle = "black";
+    //  ctx6.fillRect(fx-1, fy-1, 3, 3);
+    if (fx >= 0 && fx < size && fy >= 0 && fy < size) {
+
+      ctx6.fillStyle = color;
+      ctx6.fillRect(fx, fy, 1, 1);
+    }
+  }
+}
+    ctx6rot+= 5/3;
+    }
+function dothewinfunnythings() {
+    const canvas5 = document.getElementById("kulikenves5");
+    const ctx5 = canvas5.getContext('2d');
+
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        //bgcols.push("rgb(" + x*12 + "," + y*12 + ", 100)");
+        ctx5.fillStyle = "rgb(" + x*12 + "," + y*12 + ", 100)";
+        ctx5.fillRect(x, y, 1, 1);
+      }
+    }
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        //bgcols.push("rgb(" + x*12 + "," + y*12 + ", 100)");
+        ctx6.fillStyle = "rgb(" + x*12 + "," + y*12 + ", 100)";
+        ctx6.fillRect(x, y, 1, 1);
+      }
+    }
+    setInterval(rotatefunnywincanvas, 25);
+
+}
+    // Primer: pobarvajmo naključno mrežo pikslov
+    /*for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        ctx.fillStyle = "rgb(" + x*12 + "," + y*12 + ", 100)";
+        ctx.fillRect(x, y, 1, 1);
+      }
+    }*/
+    bgcols = [];
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        bgcols.push("rgb(" + x*12 + "," + y*12 + ", 100)");
+        ctx.fillStyle = "rgb(" + x*12 + "," + y*12 + ", 100)";
+        ctx.fillRect(x, y, 1, 1);
+      }
+    }
+    var walls = [];
+    function drawPixel(x, y, color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, 1, 1);
+    }
+    function drawOutline() {
+        for (let i = 0; i < 20; i++) {
+            drawPixel(i, 0, "gray");
+            //walls.push([i, 0]);
+            drawPixel(i, 19, "gray");
+            //walls.push([i, 19]);
+        }
+        for (let i = 1; i < 19; i++) {
+            drawPixel(0, i, "gray");
+            //walls.push([0, i]);
+            drawPixel(19, i, "gray");
+            //walls.push([19, i]);
+        }
+    }
+    console.log(walls);
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        drawPixel(x, y, "gray");
+      }
+    }
+function generateSimpleMaze() {
+    const size = 20;
+    const visited = Array.from({ length: size }, () => Array(size).fill(false));
+
+    function isCell(x, y) {
+        return x % 2 === 1 && y % 2 === 0;
+    }
+
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function dfs(x, y) {
+        visited[y][x] = true;
+        drawPixel(x, y, "white");
+
+        const dirs = shuffle([
+            [0, -2], // gor
+            [2, 0],  // desno
+            [0, 2],  // dol
+            [-2, 0], // levo
+        ]);
+
+        for (const [dx, dy] of dirs) {
+            const nx = x + dx;
+            const ny = y + dy;
+            if (nx > 0 && ny > 0 && nx < size - 1 && ny < size -1 && !visited[ny][nx]) {
+                // odstrani steno med (x,y) in (nx,ny)
+                drawPixel(x + dx / 2, y + dy / 2, "white");
+                dfs(nx, ny);
+            }
+        }
+    }
+
+    // Počni iz (1,1)
+    dfs(1, 1);
+}
+var pxColors = [0,0,0,0];
+//drawOutline()
+generateSimpleMaze(); // pokliči po 
+for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        pxColors = ctx.getImageData(x, y, 1, 1).data;
+        if (pxColors[0] == 128 && pxColors[1] == 128 && pxColors[2] == 128) {
+            //console.log("found wall at: " + x + ", " + y);
+            walls.push([x, y]);
+        }
+      }
+    }
+var playerPos = [1, 1];
+drawPixel(playerPos[0], playerPos[1], "#325F40"); // začetek
+
+drawPixel(17, 17, "gold"); // konec
+//drawPixel(2,1, "red"); // nek random pixel
+var WIN = false;
+function moveUp() {
+    if(WIN){return;}
+    /*console.log([playerPos[0], playerPos[1] - 1]);
+
+    console.log(walls.includes((playerPos[0], playerPos[1]-1).toString()));
+        console.log(walls);*/
+    if (walls.some(w => w[0] === playerPos[0] && w[1] === playerPos[1] - 1)) {
+        console.log("can't move up");
+    } else {
+        drawPixel(playerPos[0], playerPos[1]-1, "#325F40");
+        drawPixel(playerPos[0], playerPos[1], "white");
+        playerPos = [playerPos[0], playerPos[1]-1];
+    }
+}
+function moveRight() {
+    if(WIN){return;}
+    if (walls.some(w => w[0] === playerPos[0]+1 && w[1] === playerPos[1])) {
+        console.log("can't move right");
+    } else {
+        drawPixel(playerPos[0]+1, playerPos[1], "#325F40");
+        drawPixel(playerPos[0], playerPos[1], "white");
+        playerPos = [playerPos[0]+1, playerPos[1]];
+    }
+    checkWin();
+}
+function moveDown() {
+    if(WIN){return;}
+    if (walls.some(w => w[0] === playerPos[0] && w[1] === playerPos[1]+1)) {
+        console.log("can't move down");
+    } else {
+        drawPixel(playerPos[0], playerPos[1]+1, "#325F40");
+        drawPixel(playerPos[0], playerPos[1], "white");
+        playerPos = [playerPos[0], playerPos[1]+1];
+    }
+    checkWin();
+}
+function moveLeft() {
+    if(WIN){return;}
+    if (walls.some(w => w[0] === playerPos[0]-1 && w[1] === playerPos[1])) {
+        console.log("can't move left");
+    } else {
+        drawPixel(playerPos[0]-1, playerPos[1], "#325F40");
+        drawPixel(playerPos[0], playerPos[1], "white");
+        playerPos = [playerPos[0]-1, playerPos[1]];
+    }
+    checkWin();
+}
+function checkWin() {
+    if (playerPos[0] === 17 && playerPos[1] === 17) {
+        WIN = true;
+        document.getElementById("zmagagalerija").style.display = "flex";
+        document.getElementById("zmagagalerijatext").style.display = "none";
+        dothewinfunnythings();
+            for (let y = 0; y < 20; y++) {
+                setTimeout(() => {
+      for (let x = 0; x < 20; x++) {
+        setTimeout(() => {
+        //bgcols.push("rgb(" + x*12 + "," + y*12 + ", 100)");
+        ctx.fillStyle = "rgb(" + x*12 + "," + y*12 + ", 100)";
+        ctx.fillRect(x, y, 1, 1);}, x * 75);
+      }
+                }, y * 150);}
+    }
+}
+function dofunnycolorselect(a,b,c){
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        ctx4.fillStyle = "rgb("+ Math.min((x*12)+(a*127.5),255) + "," + Math.min((x*12)+(b*127.5),255) + "," + Math.min((x*12)+(c*127.5),255) + ")";
+        ctx4.fillRect(x, y, 1, 1);
+      }
+    }
+}
+//dofunnycolorselect(1,0,1)
+
+  </script>
+
+
+</body>
+</html>
