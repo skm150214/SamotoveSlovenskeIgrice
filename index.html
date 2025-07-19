@@ -2,8 +2,12 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>Samotova AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+  <link rel="shortcut icon" type="image/png" href="https://samotovesi.si/logo/logo.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://samotovesi.si/logo/logo.png">
+    <meta name="description" content="Najboljša spletna stran za najboljše šolske igrice!">
+    <title>Samotove Šolske Igrice - Najboljše igrice za vse!</title>
     <script src="./logo.js" defer></script>
+   
     <style>
         @property --gradient-angle {
             syntax: "<angle>";
@@ -11,10 +15,13 @@
             inherits: false;
         }
         @font-face {
-            font-family: "ComicSansBold";
-            src: url("https://samotovesi.si/fonts/comicsans.ttf") format("truetype");
-            font-weight: bold;
-        }
+  font-family: "fredoka";
+  src: url('https://samotovesi.si/fonts/comicsans-webfont.woff') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+}
+
         * {
             margin: 0;
             padding: 0;
@@ -52,8 +59,9 @@
             align-items: center;
             background-color: #333;
             padding: 10px 20px;
-            font-family: "ComicSansCustom", cursive;
+            font-family: "Fredoka", sans-serif;
             color: white;
+              font-weight: normal;
         }
         .rightTopaling{
             margin-left: auto;
@@ -71,7 +79,7 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 8px;
-            font-family: "ComicSansCustom", cursive;
+            font-family: "Fredoka", sans-serif;
             transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
             margin-right: 1.5vh;
         }
@@ -159,7 +167,7 @@
             margin-bottom: 0.75vh;
         }
         .nameText{
-            font-family: "ComicSansCustom", cursive;
+            font-family: "Fredoka", sans-serif;
             margin-top: 1vh;
             color: #c0b5d3;
             font-weight: bold;
@@ -178,11 +186,21 @@
             display: flex;
             margin-top: 1vh;
             flex-direction: row;
-            font-family: "ComicSansCustom", cursive;
+            font-family: "Fredoka", sans-serif;
             align-items: center;
             flex-wrap: nowrap;
             gap: 2vh;
             padding: 0 2vh;
+        }
+                .spodi {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            font-family: "Fredoka", sans-serif;
+            color: white;
+              font-weight: normal;
         }
         @keyframes rotation {
             0% {
@@ -203,7 +221,7 @@
 		</div>
         <div class="rightTopaling">
         <a id="prijaviteText">Prijavite se tukaj: </a>
-        <button class="gumb" onclick="window.location.href = 'login.html';">Račun</button>
+        <button class="gumb" onclick="window.location.href = 'regis.html';">Račun</button>
         <button class="gumb" onclick="window.location.href = 'news.html';" style="background-color: #4694d9;">Novice!</button>
         </div>
     </div>
@@ -212,7 +230,13 @@
     <div class="slikacontainer" id="igremenu">
 
     </div>
+    <div style="height: 100%;"></div>
+        <div class="spodi" style="height: 5vh">
+            <a style="color: white;font-family: sans-serif;">© 2025 Samotove Šolske Igrice</a>
+            <a href='https://samotovesi.si/info.html?p="p"' style="color:lightblue;font-family: sans-serif;">Policije privatnih informacij</a>
+            </div>
     </div>
+
     <div class="main" style="background-color: #83d4e4;">
         <div class="slikacontainer"style="display: flex;flex-direction: column;justify-content: center;">
             <div class="slika-wrapper2" style="height: 40.5vh;width: 35.5vh;margin-top: 10vh;"><img src="jaz.jpg" alt="samotova slika tuki" class="slika" style="cursor:default;"></div>
@@ -230,14 +254,14 @@
         //alert("did aaaaaaaaaaaaaaaa")
 
   window.addEventListener("DOMContentLoaded", () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const nam = JSON.parse(localStorage.getItem("name"));
 
-    if (user) {
-        document.getElementById("prijaviteText").textContent = "Prijavljeni ste kot: " + user.name;
+    if (nam) {
+        document.getElementById("prijaviteText").textContent = "Prijavljeni ste kot: " + nam;
     }
   });
 
     </script>
-        
+        <script src="getgemes.js"></script>  
 </body>
 </html>

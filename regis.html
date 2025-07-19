@@ -103,7 +103,9 @@ function dodatNameThing() {
     console.log("Rezultat prijave:", result);
     // Npr: shrani uid za uporabo naprej
     localStorage.setItem("uid", result.uid);
-	window.location.href = "login.html"; 	}// Preusmeri na glavno stran
+	localStorage.setItem("user", data);
+	localStorage.setItem("name", document.getElementById("nameParam").value);
+	window.location.href = "index.html"; 	}// Preusmeri na glavno stran
   })
   .catch(err => console.error("Napaka:", err));
 	}
@@ -171,7 +173,7 @@ document.getElementById("nameParam").addEventListener("blur", function() {
 		}
 		@font-face {
 			font-family: "ComicSansBold";
-			src: url("../../fonts/comicsans.ttf") format("truetype");
+			src: url('fonts/comicsans-webfont.woff') format('woff');
 			font-weight: bold;
 		}
 			* {
