@@ -154,7 +154,7 @@ c.addEventListener('mousemove', e => {
   lastY = (Math.floor(lastY*10))/10;
   
   const dist = Math.sqrt((x - lastX) * (x - lastX) + (y - lastY) * (y - lastY));
-  if(naredipremik == 1 && dist >= 5){
+  if(naredipremik == 1 && dist >= 4){
   ctx.lineWidth = dothewidththing(document.getElementById("nuber").value); 
   ctx.lineCap = 'round';
   ctx.beginPath();

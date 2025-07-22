@@ -8,6 +8,7 @@
 	<script defer>
 var data = null;
 var isnameallow = false;
+let 	GUIEW124H6G71234AU6345712456SČGwdČUGAS1264Ćfhbhćer124 = false;
 function handleCredentialResponse(response) {
   data = parseJwt(response.credential); // Razšifriraj Google token
   console.log("Logged in as:", data.name);
@@ -35,6 +36,7 @@ function handleCredentialResponse(response) {
   document.getElementById("googlethingies").style.display = "none";
   if (data.exists) {
 	document.getElementById("register").style.display = "none";
+	GUIEW124H6G71234AU6345712456SČGwdČUGAS1264Ćfhbhćer124 = true;
   } else {
     console.log("Google račun še NI registriran.");
 	document.getElementById("login").style.display = "none";
@@ -78,6 +80,14 @@ function checkName(nam){
     console.error("Napaka pri preverjanju imena:", err);
   });
 
+}
+function loogin(){
+	console.log("Rezultat prijave:", result);
+    // Npr: shrani uid za uporabo naprej
+    localStorage.setItem("uid", result.uid);
+	localStorage.setItem("user", data);
+	localStorage.setItem("name", document.getElementById("nameParam").value);
+	window.location.href = "index.html"; // Preusmeri na glavno stran
 }
 function dodatNameThing() {
 	checkName(document.getElementById("nameParam").value);
@@ -404,7 +414,7 @@ document.getElementById("nameParam").addEventListener("blur", function() {
 	<div class="cardCont" id="cardcont">
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="login">
 			<label>Prijavite se!</label>
-			<button id="loginitems" class="gumb wip btnmrgin">Prijava</button>
+			<button id="loginitems" class="gumb wip btnmrgin" onclick="">Prijava</button>
 			<a id="logintip" style="color: #5fdba7">Prijavite se z tistim google gumbom zgoraj!</a>
 		</div>
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="register">

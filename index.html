@@ -221,7 +221,7 @@
 		</div>
         <div class="rightTopaling">
         <a id="prijaviteText">Prijavite se tukaj: </a>
-        <button class="gumb" onclick="window.location.href = 'regis.html';">Račun</button>
+        <button class="gumb" onclick="window.location.href = 'regis.html';" id="eeelogen">Račun</button>
         <button class="gumb" onclick="window.location.href = 'news.html';" style="background-color: #4694d9;">Novice!</button>
         </div>
     </div>
@@ -255,9 +255,12 @@
 
   window.addEventListener("DOMContentLoaded", () => {
     const nam = JSON.parse(localStorage.getItem("name"));
+    const uid= JSON.parse(localStorage.getItem("uid"));
 
     if (nam) {
         document.getElementById("prijaviteText").textContent = "Prijavljeni ste kot: " + nam;
+        document.getElementById("eeelogen").textContent = "Profil";
+        document.getElementById("eeelogen").onclick = "window.location.href = 'profile.html?p='"+ uid ;
     }
   });
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gurt</title>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+justify-content: center;
+                align-items: center;
+
+            }
+        </style>
+    </head>
+    <body>
+
+            <a>gurt: yo</a>
+            <a>yo: gurt</a>
+            <div>
+                <a>gurt: </a>
+                <img src="sabu.jpg" alt="hehe tuki" id="ieg">
+            </div>
+        <script>
+            ieg = document.getElementById("ieg");
+            switch (Math.floor(Math.random() * 3)) {
+                case 0:
+                    ieg.src = "sabu.jpg";
+                    break;
+                case 1:
+                    ieg.src = "dont-sybau.png";
+                    break;
+                case 2:
+                    ieg.src = "job.jfif";
+                    break;
+            }
+        if(window.location.href != "https://gurt.samotovesi.si/"){window.location.href = "https://gurt.samotovesi.si/";};
+        </script>
+    </body>
+</html>
