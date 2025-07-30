@@ -26,12 +26,86 @@ function getCookie(name) {
   }
   return "";
 }
-
 function eraseCookie(name) {
   document.cookie = name + '=; Max-Age=-99999999; path=/;';
 }
 
 // Spremenjene funkcije za prijavo in registracijo:
+var data = null;
+var isnameallow = false;
+let 	GUIEW124H6G71234AU6345712456SČGwdČUGAS1264Ćfhbhćer124 = false;
+  function parseJwt(token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(
+	atob(base64).split('').map(function (c) {
+	  return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	}).join('')
+  );
+  return JSON.parse(jsonPayload);
+}
+function checkName(nam){
+	document.getElementById("warnin").style.display = "none";
+	  fetch("https://samotovesi.si/check_name.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: nam })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exists) {
+      isnameallow = false;
+	  document.getElementById("warnin").style.display = "block";
+    } else {
+      isnameallow = true;
+	  	  document.getElementById("warnin").style.display = "none";
+    }
+  })
+  .catch(err => {
+    console.error("Napaka pri preverjanju imena:", err);
+  });
+
+}
+function handleCredentialResponse(response) {
+  data = parseJwt(response.credential); // Razšifriraj Google token
+  console.log("Logged in as:", data.name);
+  nameEeEe = data.name;
+  console.log("Ime:", nameEeEe);
+  console.log(document.getElementById("nameParam").textContent );
+  console.log(nameEeEe.slice(0, Math.min(nameEeEe.length,30)));
+	//document.getElementById("nameParamLabel").innerText = (data.name).slice(0, 30);
+  // Shrani Google podatke v localStorage
+
+  // Posodobi UI
+  fetch("https://samotovesi.si/exist_check.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ sub: data.sub })
+})
+.then(res => res.json())
+.then(data => {
+  document.getElementById("cardcont").style.pointerEvents = "auto";
+  document.getElementById("loginitems").classList.remove("wip");
+  document.getElementById("regisitems").classList.remove("wip");
+  document.getElementById("logintip").style.display = "none";
+  document.getElementById("registertip").style.display = "none";
+  document.getElementById("hepithingies").style.display = "block";
+  document.getElementById("googlethingies").style.display = "none";
+  if (data.exists) {
+	document.getElementById("register").style.display = "none";
+	GUIEW124H6G71234AU6345712456SČGwdČUGAS1264Ćfhbhćer124 = true;
+  } else {
+    console.log("Google račun še NI registriran.");
+	document.getElementById("login").style.display = "none";
+
+	document.getElementById("nameParam").value = nameEeEe.slice(0, Math.min(nameEeEe.length,30));
+	checkName(document.getElementById("nameParam").value);
+  }
+})
+.catch(err => console.error("Napaka:", err));
+
+}
+
 
 function loogin(){
   console.log("Rezultat prijave:", result);
@@ -41,7 +115,11 @@ function loogin(){
   setCookie("name", document.getElementById("nameParam").value);
   window.location.href = "index.html"; // Preusmeri na glavno stran
 }
-
+function spremeniStevilke(w){return (w*3)-2;}
+function relength(w){
+	if (w.length > 9) w = w.slice(1, 10);
+	return ("0".repeat((9-w.length))) + w;
+}
 function dodatNameThing() {
   checkName(document.getElementById("nameParam").value);
   if (!isnameallow){
@@ -54,7 +132,7 @@ function dodatNameThing() {
     body: JSON.stringify({
       name: document.getElementById("nameParam").value,
       sub: data.sub,
-	  hash: btoa((new Date().getTime()).spremeniStevilke()) +  (Math.floor(Math.random()%783)).toString(),
+	  hash: btoa(spremeniStevilke((new Date().getTime()))) +  relength(spremeniStevilke(Math.floor(Math.random()%999999999)).toString()),
       badges: []
     })
   })
