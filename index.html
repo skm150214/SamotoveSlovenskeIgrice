@@ -7,7 +7,20 @@
     <meta name="description" content="Najboljša spletna stran za najboljše šolske igrice!">
     <title>Samotove Šolske Igrice - Najboljše igrice za vse!</title>
     <script src="./logo.js" defer></script>
-   
+   <script defer>
+    function getCookie(name) {
+  const cname = name + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(cname) == 0) {
+      return c.substring(cname.length, c.length);
+    }
+  }
+  return "";
+}
+   </script>
     <style>
         @property --gradient-angle {
             syntax: "<angle>";
@@ -254,13 +267,13 @@
         //alert("did aaaaaaaaaaaaaaaa")
 
   window.addEventListener("DOMContentLoaded", () => {
-    const nam = JSON.parse(localStorage.getItem("name"));
-    const uid= JSON.parse(localStorage.getItem("uid"));
+    const nam = getCookie("name");
+    const uid= getCookie("uid");
 
     if (nam) {
         document.getElementById("prijaviteText").textContent = "Prijavljeni ste kot: " + nam;
         document.getElementById("eeelogen").textContent = "Profil";
-        document.getElementById("eeelogen").onclick = "window.location.href = 'profile.html?p='"+ uid ;
+        document.getElementById("eeelogen").setAttribute("onclick", "window.location.href = 'profile.html?p="+ uid + "';");
     }
   });
 
@@ -268,3 +281,4 @@
         <script src="getgemes.js"></script>  
 </body>
 </html>
+ 

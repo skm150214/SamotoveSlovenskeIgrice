@@ -97,7 +97,8 @@
 
 			
 		.card {
-			background-color: #3e6eb3;
+			/*background-color: #3e6eb3;*/
+			background: linear-gradient(164deg, #206cc2, #c94343);
 			padding: 40px 30px;
 			margin-bottom: 2vh;
 			border-radius: 16px;
@@ -160,7 +161,7 @@
             border: 0;
             height: 2px;
             /*background: #333;*/
-    		background-image: linear-gradient(to right, #3e6eb3 , #353839,#181919,#353839, #3e6eb3 );
+    		background-image: linear-gradient(to right, transparent , #353839,#181919,#353839, transparent);
         }
         .tatxtcont {
             text-align: left;
@@ -228,7 +229,7 @@
 		.hvertical {
 			width: 2px;
 			height: 100%;
-			background-image: linear-gradient(to bottom, #3e6eb3, #353839, #3e6eb3);
+			background-image: linear-gradient(to bottom, transparent, #353839, transparent);
 			border: none;
 			margin: 0 10px;
 			display: flex;
@@ -279,6 +280,9 @@
 			align-items: center;
 			max-width: 25vh;
 			flex-wrap: wrap;
+		}
+		.invert{
+			filter: invert(100%) hue-rotate();
 		}
 		@keyframes rotation {
 			0% {
