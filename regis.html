@@ -111,9 +111,10 @@ function loogin(){
   console.log("Rezultat prijave:", result);
   // Shrani podatke v piškotke namesto localStorage
   setCookie("uid", result.uid);
+  setCookie("hash", result.hash);
   setCookie("user", JSON.stringify(data));
   setCookie("name", document.getElementById("nameParam").value);
-  window.location.href = "index.html"; // Preusmeri na glavno stran
+  //window.location.href = "index.html"; // Preusmeri na glavno stran
 }
 function spremeniStevilke(w){return (w*3)-2;}
 function relength(w){
@@ -144,7 +145,7 @@ function dodatNameThing() {
       setCookie("user", JSON.stringify(data));
 	  setCookie("hash", result.hash);
       setCookie("name", document.getElementById("nameParam").value);
-      window.location.href = "index.html";
+      //window.location.href = "index.html"; //https://www.youtube.com/shorts/znFMh1UwbyQ
     }
   })
   .catch(err => console.error("Napaka:", err));

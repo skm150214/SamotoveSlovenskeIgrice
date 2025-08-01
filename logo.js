@@ -16,3 +16,28 @@ if(Math.floor(Math.random() * 2) == 0){
     logodiv.appendChild(img);
     console.log("disdasd");
 }
+function checkOrientation(sss) {
+  const el = document.getElementById("rightTopaling");
+if(!el){return;}
+  if (sss) {
+    document.getElementById("zgori").style.flexDirection = "column";
+    document.getElementById("prijaviteText").style.display = "none";
+    el.style.display = "flex";
+    el.style.flexDirection = "row";
+    el.style.marginLeft = "unset";
+    el.style.justifyContent = "center";
+    el.style.alignItems = "center";
+  } else {
+    document.getElementById("zgori").style.flexDirection = "row";
+    document.getElementById("prijaviteText").style.display = "inline-block";
+    el.style.display = "";
+    el.style.flexDirection = "";
+    el.style.marginLeft = "auto";
+    el.style.justifyContent = "";
+    el.style.alignItems = "";
+  }
+}
+window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+checkOrientation(e.matches);
+});
+checkOrientation(window.matchMedia("(orientation: portrait)").matches);
