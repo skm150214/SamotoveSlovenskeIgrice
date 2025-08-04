@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Samotove Šolske Igrice - Serv info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<script src="../ime.js"></script>
+    <style>
+        :root {
+            --light: #f0f0f0;
+            --bg: #d0d0d0;
+            --dbg: #717171;
+            --name: #93bbe4;
+            --up1: #a9e493;
+            --up2: #65d63c;
+            --up3: #3bb210;
+            --up4: #4d9633;
+            --up5: #356724;
+            --dw5: #fb1c1c;
+            --dw4: #dd3535;
+            --dw3: #eb5050;
+            --dw2: #f06e6e;
+            --dw1: #eb8080;
+            --mid: #a5a5a5;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .servers {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 5.956rem;
+            height: 11.913rem;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+            transition: 0.3s cubic-bezier(0.79, 0.16, 0.1, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+            flex: 1;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 8px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+        }
+        .hr{
+            background-color: var(--bg);
+            border-width: 0px;
+            border-radius: 0.5rem;
+            height: 10px;
+            width: 100%;
+            max-width: 4.467rem;
+            min-width: 4.467rem;
+            flex: 0 0 10px;
+            border: none;
+        }
+        .disp {
+            width: 100%;
+            height: 6.25rem;
+            
+            min-height: 6.25rem;
+            background-color: var(--dbg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            max-height: 6rem;
+            align-items: end;
+
+        }
+        .name{
+            transform: translateY(-0.596rem); 
+            color:/*#C35C5CFF*/ var(--name);
+            white-space: nowrap;
+        }
+        .minicanvas {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Samotove Šolske Igrice</h1>
+    <h3 style="transform: translateY(-3rem);">server-ji</h3>
+    <p style="transform: translateY(-3rem);">tukaj so vsi aktivni/ne aktivni serverji na samotovesi.si!</p>
+    <div class="servers">
+        <div class="card">
+            <div class="disp">
+                <canvas width="100" height="100" id="disp1" class="minicanvas"></canvas>
+            </div>
+            <div class="card-content">
+                <hr class="hr">
+                <h3>server 1</h3>
+                <h6 class="name">igra hehehe</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="disp">
+                <canvas width="100" height="100" id="disp2" class="minicanvas"></canvas>
+            </div>
+            <div class="card-content">
+                <hr class="hr">
+                <h3>server 2</h3>
+                <h6 class="name">igra hehehe2</h6>
+            </div>
+        </div>
+    </div>
+    <script>
+        const canvas1 = document.getElementById('disp1');
+        const ctx1 = canvas1.getContext('2d');
+        /*            --up1: oklch(85.906% 0.12385 137.521);
+            --up2: oklch(78.043% 0.21484 138.831);
+            --up3: oklch(67.051% 0.21065 139.967);
+            --up4: oklch(60.43% 0.15271 138.558);
+            --up5: oklch(46.272% 0.11229 138.634);
+            --dw5: oklch(62.813% 0.24684 28.299);
+            --dw4: oklch(59.106% 0.20446 26.112);
+            --dw3: oklch(64.423% 0.19138 24.22);
+            --dw2: oklch(69.459% 0.16096 22.132);
+            --dw1: oklch(71.814% 0.13187 20.834);*/
+        /*            --up1: rgb(169, 228, 147);
+            --up2: rgb(101, 214, 60);
+            --up3: rgb(59, 178, 16);
+            --up4: rgb(77, 150, 51);
+            --up5: rgb(53, 103, 36);
+            --dw5: rgb(251, 28, 28);
+            --dw4: rgb(221, 53, 53);
+            --dw3: rgb(235, 80, 80);
+            --dw2: rgb(240, 110, 110);
+            --dw1: rgb(235, 128, 128);*/
+        const up1 = "#A9E493";
+        const up2 = "#65D63C";
+        const up3 = "#3BB210";
+        const up4 = "#4D9633";
+        const up5 = "#356724";
+        const dw5 = "#FB1C1C";
+        const dw4 = "#DD3535";
+        const dw3 = "#EB5050";
+        const dw2 = "#F06E6E";
+        const dw1 = "#eb8080";
+        const mid = "#A5A5A5";
+        function drawline(stx, start, end, ctxr){
+            let color = up1;
+            switch (Math.floor(start/20 - end/20)){
+                case 0: color = dw1;console.log("dw1");break;
+                case 1: color = dw2;console.log("dw2");break;
+                case 2: color = dw3;console.log("dw3");break;
+                case 3: color = dw4;console.log("dw4");break;
+                case 4: color = dw5;console.log("dw5");break;
+            }
+            switch (Math.floor(end/20 - start/20)){
+                case 0: color = up1;console.log("up1");break;
+                case 1: color = up2;console.log("up2");break;
+                case 2: color = up3;console.log("up3");break;
+                case 3: color = up4;console.log("up4");break;
+                case 4: color = up5;console.log("up5");break;
+            }
+            if (((end/20 - start/20) == 0)){
+                color = mid;
+            }
+            ctxr.strokeStyle = color;
+            ctxr.lineWidth = 5;
+            ctxr.lineCap = 'round';
+            ctxr.beginPath();
+            ctxr.moveTo(stx, 100 - start);
+            ctxr.lineTo(stx + 20, 100 - end);
+            ctxr.stroke();
+        }
+        drawline(0, 0, 67, ctx1)
+        drawline(20, 67, 45, ctx1)
+        drawline(40, 45, 52, ctx1)
+        drawline(60, 52, 23, ctx1)
+        drawline(80, 23, 23, ctx1)
+    </script>
+</body>
+</html>

@@ -108,12 +108,8 @@ function handleCredentialResponse(response) {
 
 
 function loogin(){
-  console.log("Rezultat prijave:", result);
+  //console.log("Rezultat prijave:", result);
   // Shrani podatke v piškotke namesto localStorage
-  setCookie("uid", result.uid);
-  setCookie("hash", result.hash);
-  setCookie("user", JSON.stringify(data));
-  setCookie("name", document.getElementById("nameParam").value);
   //window.location.href = "index.html"; // Preusmeri na glavno stran
 }
 function spremeniStevilke(w){return (w*3)-2;}
@@ -133,7 +129,7 @@ function dodatNameThing() {
     body: JSON.stringify({
       name: document.getElementById("nameParam").value,
       sub: data.sub,
-	  hash: btoa(spremeniStevilke((new Date().getTime()))) +  relength(spremeniStevilke(Math.floor(Math.random()%999999999)).toString()),
+	  hash: btoa(spremeniStevilke((new Date().getTime()))) +  relength(spremeniStevilke(Math.floor(Math.random()*999999999)).toString()),
       badges: []
     })
   })
@@ -143,9 +139,9 @@ function dodatNameThing() {
       console.log("Rezultat prijave:", result);
       setCookie("uid", result.uid);
       setCookie("user", JSON.stringify(data));
-	  setCookie("hash", result.hash);
+	  setCookie("hash", result.hash);//relength("123333334342345") is ts finna work??
       setCookie("name", document.getElementById("nameParam").value);
-      //window.location.href = "index.html"; //https://www.youtube.com/shorts/znFMh1UwbyQ
+      window.location.href = "index.html"; //https://www.youtube.com/shorts/znFMh1UwbyQ
     }
   })
   .catch(err => console.error("Napaka:", err));
@@ -422,14 +418,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	<div class="cardCont" id="cardcont">
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="login">
 			<label>Prijavite se!</label>
-			<button id="loginitems" class="gumb wip btnmrgin" onclick="">Prijava</button>
+			<button id="loginitems" class="gumb wip btnmrgin" onclick="loogin();">Prijava</button>
 			<a id="logintip" style="color: #5fdba7">Prijavite se z tistim google gumbom zgoraj!</a>
 		</div>
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="register">
 			<label>Registrirajte se!</label>
 			<div id="regisitems" class="regis wip" >
 				<a style="color:#cce27c;font-style: italic;margin-bottom: 2vh;">dajte si ime v tisto pod mano!</a>	
-			    <input class="input" type="text" id="nameParam" maxlength="30"></input>
+			    <input class="input" type="text" id="nameParam" maxlength="30" minlength="3"></input>
 				<a style="color:#c11818;margin-bottom: 2vh;display: none;" id="warnin">tole ime je že uporabljeno!</a>
 			    <button class="gumb" style="background-color: #b04aea;" id="nameParamButton" onclick="dodatNameThing()">Izberite si ime!</button>
 			</div>

@@ -41,3 +41,20 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
 checkOrientation(e.matches);
 });
 checkOrientation(window.matchMedia("(orientation: portrait)").matches);
+var gurt = `
+   ____                        _                 ____        _     _        ___           _               . 
+/ ___|  __ _ _ __ ___   ___ | |_ _____   _____/ ___|  ___ | |___| | _____|_ _|__ _ _ __(_) ___ ___        .
+          \___ \ / _  | '_   _ \ / _ \| __/ _ \ \ / / _ \___ \ / _ \| / __| |/ / _  | |/ _  | '__| |/ __/ _ \       .
+   ___) | (_| | | | | | | (_) | || (_) \ V |  __ ___) | (_) | \__ |   |  __ | | (_| | |  | | (_|  __/       .
+            |____/ \__,_|_| |_| |_|\___/ \__\___/ \_/ \___|____/ \___/|_|___|_|\_\___|___\__, |_|  |_|\___\___|       .
+                                                                             |___/                        .
+`;
+console.log(gurt);
+console.log("YO! nE TUKI NAPISAT KARKOLI KI LAHKO LJUDJE DOBIJO VAS RACUN!!!!");
+console.log(gurt);
+console.log("YO! nE TUKI NAPISAT KARKOLI KI LAHKO LJUDJE DOBIJO VAS RACUN!!!!");
+console.log(gurt);
+console.log("YO! nE TUKI NAPISAT KARKOLI KI LAHKO LJUDJE DOBIJO VAS RACUN!!!!");
+console.log(gurt);
+console.log("YO! nE TUKI NAPISAT KARKOLI KI LAHKO LJUDJE DOBIJO VAS RACUN!!!!");
+console.log("ce veste kaj se dogaja v js, probajte narediti eno igrico za tukaj!");
