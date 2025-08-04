@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Samotove Novice AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
+	
 	<script>
 		function doImgThingy(a) {
 			const divselecthelper = document.getElementById("slieke");
@@ -32,7 +33,25 @@
 
 	</script>
 	<script src="./logo.js" defer></script>
+	
 	<style>
+		:root{
+            --bg: oklch(93.873% 0.01594 82.743);
+            --fg: oklch(87.04% 0.07572 78.315);
+			--dbg: oklch(81.725% 0.05578 196.207);
+			--dfg: oklch(61.558% 0.06343 195.692);
+            --border: oklch(82.032% 0.00009 271.152);
+            --text: oklch(25.273% 0.02809 266.461);
+            --link: oklch(35.836% 0.11305 264.085);
+            --btn1: oklch(57.247% 0.19855 26.15);
+            --btn2: oklch(69.033% 0.14478 60.355);
+            --btn3: oklch(85.899% 0.17982 111.742);
+            --btn4: oklch(67.311% 0.16242 144.231);
+            --btn5: oklch(64.847% 0.12907 247.976);
+            --btn6: oklch(62.149% 0.2309 320.65);
+			--hre: oklch(33.984% 0.00419 16.857);
+			
+        }
 		@property --gradient-angle {
 			syntax: "<angle>";
 			initial-value: 0deg;
@@ -128,11 +147,12 @@
 			height: calc(100% - 70px);
 			padding: 20px;
 			margin-top: 1vh;
+			
 		}
 
 			
 		.card {
-			background-color: #3e6eb3;
+			background-color: var(--dbg);
 			padding: 40px 30px;
 			margin-bottom: 2vh;
 			border-radius: 16px;
@@ -193,8 +213,7 @@
             color: black;
             border: 0;
             height: 2px;
-            background: #333;
-            background-image: linear-gradient(to right, #3e6eb3, #bec5c9, #3e6eb3);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--hre), rgba(0, 0, 0, 0));
 
         }
         .tatxtcont {
@@ -273,7 +292,7 @@
 		/*                <img src="fish.jpg" class="cardImg" onclick="doImgThingy(1);"></img>
                 <img src="rah.jpg" class="cardImg" onclick="doImgThingy(2);"></img>*/
 	</style>
-
+<link rel="stylesheet" href="gurtcss.css">
 </head>
 <body>
 	<div class="zgori" id="zgori">
@@ -302,7 +321,7 @@
 			<div class="bigimgdivwrap">
 				<img class="bigslika" id="taslika"></img>
 			</div>
-			<button class="xtgumb" onclick="hide();">✖</button>
+			<button class="xtgumb" onclick="hide();"></button>
 		</div>
 	</div>
 </body>

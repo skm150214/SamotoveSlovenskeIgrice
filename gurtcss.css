@@ -1,52 +1,3 @@
-<!DOCTYPE html>
-<html lang="sl">
-<head>
-    <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/png" href="https://samotovesi.si/logo/logo.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="https://samotovesi.si/logo/logo.png">
-    <meta name="description" content="Najboljša spletna stran za najboljše šolske igrice!">
-    <title>Samotove Šolske Igrice - Najboljše igrice za vse!</title>
-    <script src="./logo.js" defer></script>
-   <script defer>
-    function getCookie(name) {
-  const cname = name + "=";
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i].trim();
-    if (c.indexOf(cname) == 0) {
-      return c.substring(cname.length, c.length);
-    }
-  }
-  return "";
-}
-function eraseCookie(name) {
-  document.cookie = name + '=; Max-Age=-99999999; path=/;';
-}
-   </script>
-
-
-
-    <script defer>
-        //var fav = document.getElementById("a");
-        //fav.style.setProperty('--gradient-angle', '90deg');
-        //fav.style.setProperty("background", "conic-gradient(from var(--gradient-angle), blue, lightblue, red, white, blue);");
-        //alert("did aaaaaaaaaaaaaaaa")
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const nam = getCookie("name");
-    const uid= getCookie("uid");
-
-    if (nam) {
-        document.getElementById("prijaviteText").textContent = "Prijavljeni ste kot: " + nam;
-        document.getElementById("eeelogen").textContent = "Profil";
-        document.getElementById("eeelogen").setAttribute("onclick", "window.location.href = 'profile.html?p="+ uid + "';");
-    }
-  });
-
-    </script>
-        <script src="getgemes.js" defer></script>  
-    <style>
         :root{
             --bg: oklch(93.873% 0.01594 82.743);
             --fg: oklch(87.04% 0.07572 78.315);
@@ -59,6 +10,7 @@ function eraseCookie(name) {
             --btn4: oklch(67.311% 0.16242 144.231);
             --btn5: oklch(64.847% 0.12907 247.976);
             --btn6: oklch(62.149% 0.2309 320.65);
+            --hre: oklch(33.984% 0.00419 16.857);
         }
         @property --gradient-angle {
             syntax: "<angle>";
@@ -85,7 +37,7 @@ function eraseCookie(name) {
             font-family: Arial, sans-serif;
         }
         body {
-            background-color: #55ce83;
+            background-color: var(--bg);
             background-size: 100% 100%;
             background-attachment: fixed;
             margin: 0;
@@ -227,52 +179,3 @@ function eraseCookie(name) {
             font-weight: normal;
             border-top: var(--border) solid 0.2rem;
         }
-        @keyframes rotation {
-            0% {
-                --gradient-angle: 0deg;
-            }
-            100% {
-                --gradient-angle: 360deg;
-            }
-        }/*<div class="main" style="background-color: #83d4e4;">
-        <div class="slikacontainer"style="display: flex;flex-direction: column;justify-content: center;">
-            <div class="slika-wrapper2" style="height: 40.5vh;width: 35.5vh;margin-top: 10vh;"><img src="jaz.jpg" alt="samotova slika tuki" class="slika" style="cursor:default;"></div>
-            <div style="margin-top: 1vh;display: flex;flex-direction: column;align-items: center;">
-                <a>to stranico je naredu samo kladnik malačič!</a>
-                <a>publična je postala 10 jul 2025</a>
-                
-            </div>
-        </div>
-    </div>*/
-    </style>
-    <script src="idx.js"></script>
-
-</head>
-<body>
-    <div class="zgori" id="zgori">
-        <div id="logodiv">
-			<h1 id="logo">Samotove Šolske Igrice</h1>
-		</div>
-        <div class="rightTopaling" id="rightTopaling">
-        <a id="prijaviteText" style="margin-right: 1rem;">Prijavite se tukaj: </a>
-        <button class="gumb" onclick="window.location.href = 'regis.html';" id="eeelogen">Račun</button>
-        <button class="gumb" onclick="window.location.href = 'news.html';" style="background-color: #4694d9;">Novice!</button>
-        </div>
-    </div>
-    <div class="main border">
-    <h1 class="hear">Najboljše igrice:</h1>
-    <div class="slikacontainer" id="igremenu">
-
-    </div>
-    <div style="height: 100%;"></div>
-        <div class="spodi" style="height: 2.978rem">
-            <a style="font-family: sans-serif;">© 2025 Samotove Šolske Igrice</a>
-            <a href='https://samotovesi.si/info.html?p="p"' style="color:var(--link);font-family: sans-serif;">Policije privatnih informacij</a>
-            </div>
-    </div>
-
-    
-
-</body>
-</html>
- 
