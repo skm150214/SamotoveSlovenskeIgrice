@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 	<style>
-		:root{
+		/*:root{
             --bg: oklch(93.873% 0.01594 82.743);
             --fg: oklch(87.04% 0.07572 78.315);
 			--dbg: oklch(89.595% 0.02146 85.929);
@@ -199,16 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			--v2: 1.191rem;
 			--vn1: -0.596rem;
 			--vn2: -1.191rem;
-        }
+        }*/
 		@property --gradient-angle {
 			syntax: "<angle>";
 			initial-value: 0deg;
 			inherits: false;
-		}
-		@font-face {
-			font-family: "ComicSansBold";
-			src: url('fonts/comicsans-webfont.woff') format('woff');
-			font-weight: bold;
 		}
 
 		.gumb{
@@ -244,20 +239,20 @@ document.addEventListener("DOMContentLoaded", () => {
 			align-items: right;
 			background-color: var(--btn5);
 			border: none;
-			margin: 2vh;
+			margin: var(--v1);
 			outline: black solid 0.2rem;
 		}
 		.leftA{
 			text-align: left;
 			font-family: sans-serif;
 		}
-		.login{
+		/*.login{
 			align-items: center;
 			margin-top: 5vh;
 			background-color: #333;
 			text-align: center;
 			font-family: "ComicSansCustom", cursive;
-		}
+		}*/
 		.cardCont {
 			display: flex;
 			flex-direction: row;
@@ -265,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			align-items: center;
 			height: calc(100% - 70px); /* adjust if navbar height changes */
 			padding: 20px;
-			margin-top: 1vh;
+			margin-top: var(--v1);
 			align-items: flex-start;
 		}
 
@@ -273,8 +268,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		.card {
 			background-color: var(--fg);
 			padding: 40px 30px;
-			margin: 2vh;
-			margin-top: 0vh;
+			margin: var(--v1);
+			margin-top: 0px;
 			border-radius: 16px;
 			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
 			width: 100%;
@@ -306,16 +301,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			scale: 1.5;
 			color:black;
 		}
-		.wip{
-			filter: grayscale(100%);
-		}
 		.signindiv{
 			width: 20%;
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			margin: 2vh;
+			margin: var(--v1);
 		}
 		.everythingints{
 			display: flex;
@@ -324,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			align-items: center;
 		}
 		.btnmrgin{
-			margin: 1vh;
+			margin: var(--v1);
 		}
 		.regis{
 			display: flex;
@@ -333,12 +325,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			align-items: center;
 		}
 		.arrowimg{
-			width: 20vh;
+			width: 11.913rem;
 			height: auto;
-			transform: translateY(1.25vh);
+			transform: translateY(0.745rem);
 		}
 		.arrleft{
-			transform: scaleX(-1) translateY(1.25vh);
+			transform: scaleX(-1) translateY(0.745rem);
 		}
 		@keyframes rotation {
 			0% {
@@ -396,14 +388,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="register">
 			<label>Registrirajte se!</label>
 			<div id="regisitems" class="regis wip" >
-				<a style="color: var(--btn5);font-style: italic;margin-bottom: 2vh;">dajte si ime v tisto pod mano!</a>	
+				<a style="color: var(--btn5);font-style: italic;margin-bottom: var(--v1);">dajte si ime v tisto pod mano!</a>	
 			    <input class="input" type="text" id="nameParam" maxlength="30" minlength="3"></input>
-				<a style="color:#c11818;margin-bottom: 2vh;display: none;" id="warnin">tole ime je že uporabljeno!</a>
+				<a style="color:#c11818;margin-bottom: var(--v1);display: none;" id="warnin">tole ime je že uporabljeno!</a>
 			    <button class="gumb" style="background-color: #b04aea;" id="nameParamButton" onclick="dodatNameThing()">Izberite si ime!</button>
 			</div>
 			<div id="registext">
 				
-				<a id="registertip" style="color: var(--btn2);margin-top: 4vh;">Začnite registracijo z tistim google gumbom zgoraj!</a>
+				<a id="registertip" style="color: var(--btn2);margin-top: 2.383rem;">Začnite registracijo z tistim google gumbom zgoraj!</a>
 			</div>
 		</div>
 	</div>
