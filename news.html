@@ -38,8 +38,8 @@
 		:root{
             --bg: oklch(93.873% 0.01594 82.743);
             --fg: oklch(87.04% 0.07572 78.315);
-			--dbg: oklch(81.725% 0.05578 196.207);
-			--dfg: oklch(61.558% 0.06343 195.692);
+			--dbg: /*#cabdab#f5f3ef*/oklch(89.595% 0.02146 85.929);
+			--dfg: oklch(74.013% 0.13633 73.436);
             --border: oklch(82.032% 0.00009 271.152);
             --text: oklch(25.273% 0.02809 266.461);
             --link: oklch(35.836% 0.11305 264.085);
@@ -50,7 +50,10 @@
             --btn5: oklch(64.847% 0.12907 247.976);
             --btn6: oklch(62.149% 0.2309 320.65);
 			--hre: oklch(33.984% 0.00419 16.857);
-			
+			--v1: 0.596rem;
+			--v2: 1.191rem;
+			--vn1: -0.596rem;
+			--vn2: -1.191rem;
         }
 		@property --gradient-angle {
 			syntax: "<angle>";
@@ -94,7 +97,7 @@
 		.gumb{
 
 			align-items: center;
-			background-color: #4caf50;
+			background-color: var(--btn4);
 			border: none;
 			color: white;
 			padding: 15px 32px;
@@ -105,39 +108,15 @@
 			cursor: pointer;
 			border-radius: 8px;
 			font-family: "ComicSansCustom", cursive;
-			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+			/*transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);*/
 		}
-		.gumb:hover{
+		/*.gumb:hover{
 			scale: 1.1;
 			background-color: #2cad4e;
-		}
-		.input{
-			cursor: pointer;
-			border-radius: 8px;
-			font-family: "ComicSansCustom", cursive;
-			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			padding: 15px 32px;
-			margin-left: auto;
-			align-items: right;
-			background-color: #376d94;
-			border: none;
-			margin: 2vh;
-			outline: black solid 0.5vh;
-		}
+		}*/
 		.leftA{
 			text-align: left;
 			font-family: sans-serif;
-		}
-		.login{
-			align-items: center;
-			margin-top: 5vh;
-			background-color: #333;
-			text-align: center;
-			font-family: "ComicSansCustom", cursive;
-			color: white;
 		}
 		.cardCont {
 			display: flex;
@@ -146,24 +125,23 @@
 			align-items: center;
 			height: calc(100% - 70px);
 			padding: 20px;
-			margin-top: 1vh;
-			
+			margin-top: var(--v1);
 		}
 
 			
 		.card {
 			background-color: var(--dbg);
 			padding: 40px 30px;
-			margin-bottom: 2vh;
+			margin-bottom: var(--v2);
 			border-radius: 16px;
 			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
 			text-align: center;
 			font-family: "ComicSansCustom", cursive;
 			color: black;
-            min-height: 75vh;
-            min-width: calc(100% - 10vh);
-            max-width: calc(100% - 10vh);
-			outline: black solid 0.75vh;
+            min-height: 44.672rem;
+            min-width: calc(100% - 5.956rem);
+            max-width: calc(100% - 5.956rem);
+			outline: black solid 0.2rem;
             /*background: linear-gradient(from -37deg, black, #2e2c2c);*/
 			/*align-items: center;*/
             display: flex;
@@ -181,10 +159,10 @@
 			object-position: center center;
 			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.55);
             background-image: linear-gradient(164deg, wheat, white);
-            margin-left: 1vh;
-            margin-right: 1vh;
+            margin-left: var(--v1);
+            margin-right: var(--v1);
 			cursor: pointer;
-			transition: all 0.05s ease-in;
+			transition: all 0.2s cubic-bezier(1, 0.31, 0.38, 0.93);
 		}
 		.cardImg:hover{
 			scale: 1.1;
@@ -195,26 +173,24 @@
 		.cardImg:active{
 			scale: 1.15;
 		}
-		.fortnitetextlol{
-			display: inline-block;
-			transform: rotate(-23deg) translateY(0.275vh);
-			scale: 1.5;
-			color:black;
-		}
 		.wip{
 			filter: grayscale(100%);
 		}
         .ttl{
             /*text-align: left; */
             color:wheat;
-            -webkit-text-stroke: black 0.25vh; 
+            -webkit-text-stroke: black 0.149rem; 
         }
         .har{
-            color: black;
-            border: 0;
-            height: 2px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--hre), rgba(0, 0, 0, 0));
-
+            background-color: var(--bg);
+            border-width: 0px;
+            border-radius: 0.4rem;
+            height: 10px;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            flex: 0 0 10px;
+            border: var(--dfg) solid 0.2rem;
         }
         .tatxtcont {
             text-align: left;
@@ -225,7 +201,7 @@
             display: block;
             width: 100%;
             margin: 0;
-            margin-top: 1vh;
+            margin-top: var(--v1);
         }
         .imgdiv{
          display: block;
@@ -234,7 +210,7 @@
 			/*min-width: calc(100% - 10vh);
             max-width: calc(100% - 10vh);*/
 			width: auto;
-			border-radius: 1vh;
+			border-radius: var(--v1);
 			margin: 0 auto;
 			align-items: center;
 			display: block;
@@ -247,16 +223,16 @@
 			/*display: inline-block;*/
 			position: relative;
 			z-index: 0;
-			margin-top: 2vh;
+			margin-top: var(--v2);
 		}
 		.bigimgdivwrap::before,
         .bigimgdivwrap::after {
             content: "";
             position: absolute;
-            inset: -1vh;
+            inset: var(--vn1);
             z-index: 0;
             background: conic-gradient(from var(--gradient-angle), red, yellow, lime, cyan, blue, magenta, red);
-            border-radius: 1vh;
+            border-radius: var(--v1);
             animation: rotation 4.5s cubic-bezier(0.21, 0.56, 0.5, 1) infinite;
         }
 		.bigimgclass{
@@ -266,19 +242,19 @@
   flex-direction: column;
 		}
 		.xtgumb{
-			margin: 2.5vh auto;
-			width: 5vh;
-			height: 5vh;
+			margin: 1.489rem auto;
+			width: 2.978rem;
+			height: 2.978rem;
 			border-radius: 100%;
 			text-align: center;
 			color: white;
 			background-color: rgba(0, 0, 0, 0);
 			scale: 1.000001;
-			background: conic-gradient(from 23deg, #2a2626, #000000, #2a2626, #808080, #2a2626, #000000, #2a2626, #808080, #2a2626, #000000, #2a2626,  #808080, #2a2626, #000000, #2a2626,  #808080, #2a2626, #000000, #2a2626);
+			background: var(--hre);
 			transition: all 0.4s cubic-bezier(0.6, 0.04, 0.98, 0.335);
 		}
 		.xtgumb:hover{
-			scale: 1.5;
+			filter: saturate(1.2);
 			/*transform: rotate(180deg);*/
 		}
 				@keyframes rotation {
@@ -310,7 +286,7 @@
         <h1 class="ttl">Novice!!!!!!</h1>
         <hr class="har"></hr>
         <a class="tatxtcont">text tuki je ful velik!!!!!!!!!! <br>break</br> tungutngunt sahur<br>break</a>
-        <hr class="har" style="margin-top: auto;margin-bottom: 3vh;"></hr>
+        <hr class="har" style="margin-top: auto;margin-bottom: 1.787rem;"></hr>
             <div class="imgdiv" id="slieke">
                 <img src="news/0-leslika.jpg" class="cardImg" onclick="doImgThingy(0);"></img>
 
@@ -321,7 +297,7 @@
 			<div class="bigimgdivwrap">
 				<img class="bigslika" id="taslika"></img>
 			</div>
-			<button class="xtgumb" onclick="hide();"></button>
+			<button class="xtgumb" onclick="hide();">❌</button>
 		</div>
 	</div>
 </body>
