@@ -42,6 +42,14 @@ function eraseCookie(name) {
         document.getElementById("eeelogen").textContent = "Profil";
         document.getElementById("eeelogen").setAttribute("onclick", "window.location.href = 'profile.html?p="+ uid + "';");
     }
+    const iscook = getCookie("aCook");
+    if (iscook != null && iscook != "") {
+        document.getElementById("cookie_bottom").style.display = "none";
+        document.getElementById("cookie").style.pointerEvents= "none";
+        setInterval(() => {
+            clearInterval(bumpinter);
+        }, 10000);
+    }
   });
 
     </script>
@@ -168,6 +176,40 @@ function eraseCookie(name) {
             gap: 1.191rem;
             padding: 0 1.191rem;
         }
+        .cookie{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+        }
+        .cookie_bottom{
+            width: 97.5%;
+            height: 35rem;
+            background-color: whitesmoke;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            border-top: black solid 0.2rem;
+            border-left: black solid 0.2rem;
+            border-right: black solid 0.2rem;
+            font-family: "Comic Sans MS", sans-serif;
+            padding: 2rem;
+            display: flex;
+            flex-direction: row;
+            transform: translateY(15rem);
+        }
+        .cookie_content{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 2rem;
+        }
+        .cookie_side{
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+        }
         @keyframes rotation {
             0% {
                 --gradient-angle: 0deg;
@@ -191,6 +233,30 @@ function eraseCookie(name) {
 
 </head>
 <body>
+    <div class="cookie" id="cookie">
+        
+        <div class="cookie_bottom" id="cookie_bottom" onmouseenter="clearInterval(bumpinter);" onmouseleave="bumpinter = setInterval(dofunnnybumpthing, 2000);console.log('bump');">
+            
+            <div class="cookie_content" >
+                <h1>Piškotki!</h1>
+                <p>mi uporabljamo piškotke da vam naredimo najboljšo izkušnjo!</p>
+                <p>porabljeni so za veliko stvari! na srečo, vaših informacij ne prodajamo!</p>
+                <p>ampak, jih sevedno rabimo da lahko naša spletna stran deluje (za vas!)</p>
+                <p>zgornji gumb bo naredil, da shranimo vse kar potrebujemo da vam naredimo najboljšo izkušnjo!</p>
+                <p>spodnji, pa minimalno da vam stran deluje!</p>
+                <a href='https://samotovesi.si/info.html?p="p"' style="color:var(--link);">več informacij</a>
+            </div>
+            <div class="cookie_side">
+                <p style="margin-bottom: 1rem;">se strinjate za piškotke?</p>
+                <button class="gumb"style="background: var(--btn4);" onclick="acceptCookies()">Ja!</button>
+                <button class="gumb"style="background: var(--btn1);margin-top:0.5rem;" onclick="dontAcceptCookies()">Ne :(</button>
+                <a style="margin-left: 1.2rem;margin-top: 0.2rem;">^</a>
+                <p style="font-size: smaller;justify-content: start;">tale užge</p>
+                <p style="font-size: smaller;justify-content: start;">samo piškotke!</p>
+            </div>
+            <img src="./cookie.png" style="width: 3rem;height: 3rem;transform: translateX(3.2rem) translateY(-3.2rem) rotate(var(--gradient-angle));animation: rotation 4.5s linear infinite;">
+        </div>
+    </div>
     <div class="zgori" id="zgori">
         <div id="logodiv">
 			<h1 id="logo">Samotove Šolske Igrice</h1>
@@ -198,7 +264,7 @@ function eraseCookie(name) {
         <div class="rightTopaling" id="rightTopaling">
         <a id="prijaviteText" style="margin-right: 1rem;">Prijavite se tukaj: </a>
         <button class="gumb" onclick="window.location.href = 'regis.html';" id="eeelogen">Račun</button>
-        <button class="gumb" onclick="window.location.href = 'news.html';" style="background-color: #4694d9;">Novice!</button>
+        <button class="gumb" onclick="window.location.href = 'news.html';" style="background-color: var(--btn5);">Novice!</button>
         </div>
     </div>
     <div class="main border">
@@ -209,10 +275,40 @@ function eraseCookie(name) {
     <div style="height: 100%;"></div>
         <div class="spodi" style="height: 2.978rem">
             <a style="font-family: sans-serif;">© 2025 Samotove Šolske Igrice</a>
-            <a href='https://samotovesi.si/info.html?p="p"' style="color:var(--link);font-family: sans-serif;">Policije privatnih informacij</a>
+            <a href="https://github.com/skm150214/SamotoveSlovenskeIgrice"><img src="./github-mark.svg" style="width:2rem;margin-left: 1rem;"alt="guthib"></img></a>
+            <a href='https://samotovesi.si/info.html?p="p"' style="color:var(--link);font-family: sans-serif;margin-left: auto;">Policije privatnih informacij</a>
             </div>
     </div>
+<script>
+    function acceptCookies() {
+        document.cookie = "aCook" + "=" + encodeURIComponent(true) + ";path=/;SameSite=Lax";
+        document.getElementById("cookie_bottom").style.display = "none";
+        document.getElementById("cookie").style.pointerEvents= "none";
+    }
+    function dontAcceptCookies() {
+        document.cookie = "aCook" + "=" + encodeURIComponent(false) + ";path=/;SameSite=Lax";
+        document.getElementById("cookie_bottom").style.display = "none";
+        document.getElementById("cookie").style.pointerEvents= "none";
+    }
+    function dofunnnybumpthing() {
+        bumppow = Math.floor(Math.random()*12);
+        for (let i = 0; i < 100; i++) {
+            setTimeout(() => {
+                /*console.log("bump");
+                console.log(i);
+                console.log("translateY(-" + (((i/100)*(2-((i/100)*2)))).toString() + "rem)");*/
+                document.getElementById("cookie_bottom").style.transform = "translateY(" + ((0-((((i/100)*(2-((i/100)*2))))*bumppow))+15).toString() + "rem)";
+                if (i == 99) {
+                    document.getElementById("cookie_bottom").style.transform = "translateY(15rem)";
+                }
+            }, 10* i);
+        }
+        //document.getElementById("cookie_bottom").style.transform = "translateY(-2vh)";
 
+    }
+    bumpinter = setInterval(dofunnnybumpthing, 2000);
+    //clearInterval(bumpinter);
+</script>
     
 
 </body>

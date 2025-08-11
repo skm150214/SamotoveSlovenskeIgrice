@@ -113,11 +113,11 @@ body {
     border-radius: 8px;
     font-family: "Comic Sans MS", sans-serif;
     transition: all 0.5s cubic-bezier(1, 0.31, 0.38, 0.93);
-    margin-right: 1.5vh;
+    /*margin-right: 1.5vh;*/
 }
 
 .gumb:hover{
-    scale: 1.1;
+    transform: scale(1.1);
     filter:contrast(1.2);
 }
 
@@ -190,7 +190,7 @@ body {
 
 .spodi {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
     background-color: var(--fg);
     padding: 10px 20px;

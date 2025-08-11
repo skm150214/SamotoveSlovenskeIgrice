@@ -21,7 +21,8 @@ function checkOrientation(sss) {
 if(!el){return;}
   if (sss) {
     document.getElementById("zgori").style.flexDirection = "column";
-    document.getElementById("prijaviteText").style.display = "none";
+    pt = document.getElementById("prijaviteText")
+    if(pt) pt.style.display = "none";
     el.style.display = "flex";
     el.style.flexDirection = "row";
     el.style.marginLeft = "unset";
@@ -29,7 +30,8 @@ if(!el){return;}
     el.style.alignItems = "center";
   } else {
     document.getElementById("zgori").style.flexDirection = "row";
-    document.getElementById("prijaviteText").style.display = "inline-block";
+    pt = document.getElementById("prijaviteText")
+    if(pt) pt.style.display = "inline-block";
     el.style.display = "";
     el.style.flexDirection = "";
     el.style.marginLeft = "auto";

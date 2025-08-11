@@ -6,8 +6,37 @@
 	<script src="./logo.js" defer></script>
 	<script src="https://accounts.google.com/gsi/client" async defer></script>
 	<script defer>
+/*
+
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBZwwpfwoWPtHkMQMak55RSqxbrJFm46t8",
+  authDomain: "samotovesisifbdb.firebaseapp.com",
+  projectId: "samotovesisifbdb",
+  storageBucket: "samotovesisifbdb.firebasestorage.app",
+  messagingSenderId: "20983452290",
+  appId: "1:20983452290:web:605665c5960aaaf9221a9b",
+  measurementId: "G-B91EM50NYZ"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);*/
+
+
+
+
 // Helper funkcije za delo s piškotki
-function setCookie(name, value, days = 7) {
+function setCookie(name, value, days = 180) {
   const d = new Date();
   d.setTime(d.getTime() + (days*24*60*60*1000));
   const expires = "expires="+ d.toUTCString();
