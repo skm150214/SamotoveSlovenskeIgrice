@@ -4,36 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Samotova Login AAAAAAAAAAAAAAAAA če to pozabim spremenit bo wololo</title>
 	<script src="./logo.js" defer></script>
-	<script src="https://accounts.google.com/gsi/client" async defer></script>
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 	<script defer>
-/*
-
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBZwwpfwoWPtHkMQMak55RSqxbrJFm46t8",
-  authDomain: "samotovesisifbdb.firebaseapp.com",
-  projectId: "samotovesisifbdb",
-  storageBucket: "samotovesisifbdb.firebasestorage.app",
-  messagingSenderId: "20983452290",
-  appId: "1:20983452290:web:605665c5960aaaf9221a9b",
-  measurementId: "G-B91EM50NYZ"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);*/
-
-
-
 
 // Helper funkcije za delo s piškotki
 function setCookie(name, value, days = 180) {
@@ -63,7 +36,7 @@ function eraseCookie(name) {
 var data = null;
 var isnameallow = false;
 let 	GUIEW124H6G71234AU6345712456SČGwdČUGAS1264Ćfhbhćer124 = false;
-  function parseJwt(token) {
+function parseJwt(token) {
   const base64Url = token.split('.')[1];
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   const jsonPayload = decodeURIComponent(
@@ -157,7 +130,7 @@ function dodatNameThing() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name: document.getElementById("nameParam").value,
-      sub: data.sub,
+      sub: user._delegate.uid,
 	  hash: btoa(spremeniStevilke((new Date().getTime()))) +  relength(spremeniStevilke(Math.floor(Math.random()*999999999)).toString()),
       badges: []
     })
@@ -175,6 +148,88 @@ function dodatNameThing() {
   })
   .catch(err => console.error("Napaka:", err));
 }
+
+
+
+const firebaseConfig = {
+	apiKey: "AIzaSyBZwwpfwoWPtHkMQMak55RSqxbrJFm46t8",
+	authDomain: "samotovesisifbdb.firebaseapp.com",
+	projectId: "samotovesisifbdb",
+	storageBucket: "samotovesisifbdb.firebasestorage.app",
+	messagingSenderId: "20983452290",
+	appId: "1:20983452290:web:605665c5960aaaf9221a9b",
+	measurementId: "G-B91EM50NYZ"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+let user = "";
+// Function to handle Google Sign-In
+function signInWithGoogle() {
+	const provider = new firebase.auth.GoogleAuthProvider();
+	auth.signInWithPopup(provider)
+		.then((result) => {
+			// User successfully signed in.
+			document.getElementById("google-sign-in-button").style.display = "none";
+			document.getElementById("hepithingies").style.display = "block";	
+			user = result.user;
+			setCookie("user", JSON.stringify(user));
+			console.log("Successfully signed in with Google!", user);
+			console.log(user._delegate.uid);
+
+			// Posodobi UI
+			fetch("https://samotovesi.si/exist_check.php", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ sub:user._delegate.uid })
+			})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				nameEeEe = user._delegate.displayName;
+				document.getElementById("cardcont").style.pointerEvents = "auto";
+				document.getElementById("loginitems").classList.remove("wip");
+				document.getElementById("regisitems").classList.remove("wip");
+				document.getElementById("logintip").style.display = "none";
+				document.getElementById("registertip").style.display = "none";
+				document.getElementById("hepithingies").style.display = "block";
+				//document.getElementById("googlethingies").style.display = "none";
+				if (data.exists) {
+					document.getElementById("register").style.display = "none";
+					GUIEW124H6G71234AU6345712456SČGwdČUGAS1264Ćfhbhćer124 = true;
+				} else {
+					console.log("Google račun še NI registriran.");
+					document.getElementById("login").style.display = "none";
+
+					document.getElementById("nameParam").value = nameEeEe.slice(0, Math.min(nameEeEe.length,30));
+					checkName(document.getElementById("nameParam").value);
+				}
+			})
+			.catch(err => console.error("Napaka:", err));
+
+
+
+
+
+
+			
+			})
+		.catch((error) => {
+			// Handle Errors here.
+			console.error("Google Sign-In Error:", error.code, error.message);
+			});
+		}
+
+// Attach the function to the button's click event
+
+
+// Optional: Listen for authentication state changes to update UI
+auth.onAuthStateChanged((user) => {
+if (user) {
+				
+}
+});
 
 // V DOMContentLoaded zamenjaj pridobivanje iz localStorage na branje piškotkov
 
@@ -206,6 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Uporabnik je končal z vnosom.");
     checkName(document.getElementById("nameParam").value);
   });
+  document.getElementById('google-sign-in-button').addEventListener('click', signInWithGoogle);
 });
 </script>
 	<style>
@@ -248,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			font-size: 16px;
 			cursor: pointer;
 			border-radius: 8px;
-			font-family: "ComicSansCustom", cursive;
+			font-family: "Comic Sans MS", sans-serif;
 			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
 		}
 		.gumb:hover{
@@ -258,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		.input{
 			cursor: pointer;
 			border-radius: 8px;
-			font-family: "ComicSansCustom", cursive;
+			font-family: "Comic Sans MS", sans-serif;
 			transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
 			text-decoration: none;
 			display: inline-block;
@@ -291,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			padding: 20px;
 			margin-top: var(--v1);
 			align-items: flex-start;
+			
 		}
 
 			
@@ -301,13 +358,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			margin-top: 0px;
 			border-radius: 16px;
 			box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.85);
-			width: 100%;
+			/*width: 100%;*/
 			text-align: center;
-			font-family: "ComicSansCustom", cursive;
+			font-family: "Comic Sans MS", sans-serif;
 			outline: var(--dfg) solid 5px;
-			align-items: center;
+			
 			transition: 0.5 cubic-bezier(0.755, 0.05, 0.855, 0.06);
-
+			width: fit-content;
 		}
 		.cardImg{
 			width: 120px;
@@ -331,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			color:black;
 		}
 		.signindiv{
-			width: 20%;
+			/*width: 20%;*/
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
@@ -361,6 +418,22 @@ document.addEventListener("DOMContentLoaded", () => {
 		.arrleft{
 			transform: scaleX(-1) translateY(0.745rem);
 		}
+		.gglsigninbtn{
+			width: 11.913rem;
+			height: 2.978rem;
+			align-items: center;
+			display: flex;
+			cursor: pointer;
+		}
+		.ggllogo{
+			width: 2rem;
+			height: 2rem;
+			margin-left: 0.5rem;
+		}
+		.ggltext{
+			margin-left: 0.5rem;
+			font-family: "Comic Sans MS", sans-serif;
+		}
 		@keyframes rotation {
 			0% {
 				--gradient-angle: 0deg;
@@ -382,31 +455,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	</div>
 	<div class="everythingints">
-	<div class="signindiv">
-		<img src="arrow.png" alt="puščica tuki" class="arrowimg"></img>
-		<div id="googlethingies">
-			<div id="g_id_onload"
-				data-client_id="449096486576-aaboh7qp5n83ko1rv4pb5k4iprq2vvc7.apps.googleusercontent.com"
-				data-context="signin"
-				data-ux_mode="popup"
-				data-callback="handleCredentialResponse"
-				data-auto_select="true"
-				data-itp_support="true">
-			</div>
+		<div class="signindiv">
+			<img src="arrow.png" alt="puščica tuki" class="arrowimg"></img>
+				<button class="gglsigninbtn" id="google-sign-in-button">
+					<img src="googlelogo.webp" alt="google logo" class="ggllogo"></img>
+					<p class="ggltext">Prijavite se z Google!</p>
+				</button>
 
-			<div class="g_id_signin"
-				data-type="standard"
-				data-shape="rectangular"
-				data-theme="outline"
-				data-text="sign_in_with"
-				data-size="large"
-				data-logo_alignment="left">
+		
+			<div id="hepithingies" style="display: none;">
+				<a> Hvala za se prijaviti!</a>
 			</div>
+			<img src="arrow.png" alt="puščica tuki" class="arrowimg arrleft"></img>
 		</div>
-		<div id="hepithingies" style="display: none;">
-			<a> Hvala za se prijaviti!</a>
-		</div>
-		<img src="arrow.png" alt="puščica tuki" class="arrowimg arrleft"></img>
 	</div>
 	<div class="cardCont" id="cardcont">
 		<div class="card" style="display: flex;flex-direction: column;justify-content: center;" id="login">
